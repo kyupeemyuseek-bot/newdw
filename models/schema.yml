@@ -31,3 +31,16 @@ models:
 
       - name: created_date
         description: "Date when the status was created in the system."
+
+  - name: dim_account_status
+    description: "Dimension table for account statuses"
+    columns:
+      - name: status_code
+        description: "Status code as string"
+        tests:
+          - unique
+          - not_null
+      - name: status_description
+        description: "Status description"
+      - name: created_date
+        description: "Date the status was created"
