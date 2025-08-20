@@ -1,0 +1,42 @@
+﻿BranchID,Description,Cluster,City,Province,ZipCode
+1,Central,Central,Las Pinas,Manila,1742
+2,Las Piñas,NCR,Las Pinas,Manila,1742
+3,Cebu,Visayas,Cebu City ,Cebu,6000
+4,Cagayan de Oro,Mindanao,CAGAYAN DE ORO CITY,Misamis Oriental,9000
+5,Zamboanga,Mindanao,ZAMBOANGA CITY,Zamboanga del sur,7000
+6,Santuario ,NCR,Las Pinas,Manila,1742
+7,Iloilo,Visayas,Iloilo City,Iloilo,5000
+8,Norzagaray,Luzon,San Jose del Monte,Bulacan,3023
+9,Bambang,Luzon,Bambang,Nueva Vizcaya,3702
+10,San Fernando,Luzon,San Fernando City,Pampanga,2000
+11,General Trias,Luzon,General Trias,Cavite,4107
+12,General Santos City,Mindanao,General Santos City,General Santos,9500
+13,Bauan,Luzon,Bauan,Batangas,4201
+14,Antipolo,Luzon,Antipolo City,Rizal,1870
+15,Subic,Luzon,Subic,Zambales,2209
+16,Sariaya,Luzon,Sariaya,Quezon,4322
+17,Isabela,Luzon,Santiago City,Isabela,3311
+18,Amadeo,Luzon,Amadeo,Cavite,4119
+19,Bukidnon,Mindanao,Malaybalay City,Bukidnon,8700
+20,Naga,Luzon,Naga City,Camarines Sur,4400
+21,Tagum,Mindanao,Tagum City,Davao del Norte ,8100
+22,Liliw,Luzon,Liliw,Laguna,4004
+23,Talisay,Luzon,Talisay,Batangas,4220
+24,Padre Garcia,Luzon,Padre Garcia,Batangas,4224
+25,Bacolod,Visayas,Bacolod City,Bacolod,6100
+26,"San Jose, Nueva Ecija",Luzon,San Jose,Nueva Ecija,3121
+27,"Angeles, Pampanga",Luzon,Angeles City,Pampanga,2009
+28,"Nasugbu, Batangas",Luzon,Nasugbu,Batangas,4231
+29,Koronadal,Mindanao,Koronadal City,South Cotabato,9506
+30,Mexico,Luzon,Mexico,Pampanga,2021
+31,Iriga,Luzon,San Roque,Iriga,4431
+32,Manaoag,Luzon,Manaoag,Pangasinan,2430
+33,Pozorrubio,Luzon,Pozorrubio,Pangasinan,2435
+34,Passi,Visayas,Passi City,Iloilo,May-37
+35,Puerto,Mindanao,CAGAYAN DE ORO CITY,Misamis Oriental,9000
+36,Iligan,Mindanao,Iligan City ,Lanao del Norte,9200
+37,Central Extension,Central,Las Pinas,Manila,1742
+38,Butuan,Mindanao,Butuan City,Agusan del Norte,8600
+39,Davao,Mindanao,Davao City,Davao del Sur,8000
+40,Zamboanga del Sur,Mindanao,ZAMBOANGA CITY,Zamboanga del sur,7000
+41,Arayat,Luzon,Arayat,Pampanga,2012

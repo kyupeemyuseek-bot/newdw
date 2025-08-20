@@ -1,0 +1,16 @@
+﻿StatusCode,Description,CreatedDate
+1,New Application,7/13/2017
+2,Reserved,7/13/2017
+3,New Account,7/13/2017
+4,Current Account,7/13/2017
+5,Past Due Account,7/13/2017
+6,Restructured Account,7/13/2017
+7,Lapsed Contract,7/13/2017
+8,Contracted,7/13/2017
+9,Uncontracted,7/13/2017
+10,New Application with Documents,7/13/2017
+11,Fully Paid,7/13/2017
+12,Cancelled,7/13/2017
+13,Existing,12/2/2017
+CON,Contracted,12/2/2017
+UNCON,Uncontracted,12/2/2017
