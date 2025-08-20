@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_account_status
+    description: "Staging model for account status reference data seeded from CSV."
+    columns:
+      - name: status_code
+        description: "Unique code identifying the account status."
+        tests:
+          - not_null
+          - unique
+
+      - name: status_description
+        description: "Text description of the account status."
+        tests:
+          - not_null
+
+      - name: created_date
+        description: "Date when the status was created in the system."
