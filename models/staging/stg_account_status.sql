@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ ref('AccountStatus') }}
+    select * from AccountStatus
 ),
 
 renamed as (
