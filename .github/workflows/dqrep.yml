@@ -1,44 +1,59 @@
-name: Data Quality Report
+name: dbt test
 
 on:
+  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
-  build:
+  run-dbt-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
+      - name: Install dbt with Snowflake adapter
         run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install dbt-core dbt-snowflake
 
-      # Install dbt
-      - name: Install dbt
+      - name: Create profiles.yml
         run: |
-          pip install dbt-core dbt-postgres   # or dbt-snowflake/dbt-bigquery depending on your adapter
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOL
+          newdw:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: XCPCNDY-WG64940
+                user: ANGELOALFONSO
+                password: VnpZWXpwnvf2Z4K
+                role: ACCOUNTADMIN
+                warehouse: COMPUTE_WH
+                database: MSITDBTSNOWGIT
+                schema: DWPRACTICE
+                threads: 1
+          EOL
 
-      # Run dbt test to generate target/run_results.json
-      - name: Run dbt tests
-        run: |
-          dbt deps        # if you use packages
-          dbt seed --full-refresh || true   # optional if you have seeds
-          dbt run || true                   # optional if you want full models
-          dbt test                          # generates target/run_results.json
+      - name: Run dbt debug
+        run: dbt debug --profile newdw
 
-      # Now run your report script
+      - name: Run dbt test
+        run: dbt test --profile newdw
+
+      # 👉 NEW STEP: Run your Python script to generate report
       - name: Generate Data Quality Report
         run: |
+          pip install -r requirements.txt || true   # install any needed libs
           python scripts/dq_report.py
 
-      # Deploy report to GitHub Pages
+      # 👉 OPTIONAL: Deploy docs/ (report) to GitHub Pages
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
