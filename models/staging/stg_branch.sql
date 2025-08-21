@@ -1,7 +1,7 @@
 -- models/staging/stg_branch.sql
 with source as (
     select *
-    from MSITDBTSNOWGIT.SEEDS.BRANCH
+    from {{ ref('Branch') }}
 ),
 
 -- Deduplicate: keep latest CreatedDate per branchid
