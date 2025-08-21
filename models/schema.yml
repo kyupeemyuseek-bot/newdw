@@ -1,0 +1,160 @@
+version: 2
+
+seeds:
+  - name: AccountStatus
+    description: "{{ doc('account_status') }}"
+    columns:
+      - name: StatusCode
+        description: "Unique code identifying the account status."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Text description of the account status."
+      - name: CreatedDate
+        description: "Original date of creation in source data."
+        
+models:
+  - name: stg_account_status
+    description: "{{ doc('stg_account_status') }}"
+    columns:
+      - name: status_code
+        description: "Unique code identifying the account status."
+        tests:
+          - not_null
+          - unique
+
+      - name: status_description
+        description: "Text description of the account status."
+        tests:
+          - not_null
+
+      - name: created_date
+        description: "Date when the status was created in the system."
+
+  - name: dim_account_status
+    description: "{{ doc('dim_account_status') }}"
+    columns:
+      - name: status_code
+        description: "Status code as string"
+        tests:
+          - unique
+          - not_null
+      - name: status_description
+        description: "Status description"
+      - name: created_date
+        description: "Date the status was created"
+
+  - name: stg_reservationhdr
+    description: "{{ doc('stg_reservationhdr') }}"
+    columns:
+      - name: transaction_id
+        description: "Primary key of the reservation"
+        tests:
+          - unique
+          - not_null
+
+      - name: branch_id
+        description: "Branch identifier"
+
+      - name: reservation_date
+        description: "Date and time when the reservation was made"
+        tests:
+          - not_null
+
+      - name: client_id
+        description: "Foreign key to client"
+
+      - name: status_code
+        description: "Reservation status"
+
+      - name: lot_price
+        description: "Lot price before taxes/discounts"
+
+      - name: tcp
+        description: "Total contract price"
+
+  - name: fact_reservations
+    description: "{{ doc('fact_reservations') }}"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each reservation transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: branch_id
+        description: "Foreign key reference to branch dimension."
+        tests:
+          - not_null
+
+      - name: client_id
+        description: "Foreign key reference to client dimension."
+        tests:
+          - not_null
+
+      - name: unit_code
+        description: "Foreign key reference to unit dimension."
+        tests:
+          - not_null
+
+      - name: status_code
+        description: "Reservation status code."
+        tests:
+          - not_null
+
+      - name: finance_type_code
+        description: "Reservation finance type code."
+        tests:
+          - not_null
+
+      - name: source_code
+        description: "Reservation source code."
+        tests:
+          - not_null
+
+      - name: lot_price
+        description: "Base price of the lot."
+
+      - name: vat
+        description: "Value-added tax amount."
+
+      - name: gross_lot_price
+        description: "Gross price of the lot including VAT."
+
+      - name: sales_disc
+        description: "Sales discount applied to the reservation."
+
+      - name: net_lot_price
+        description: "Net lot price after discounts."
+
+      - name: misc
+        description: "Miscellaneous charges."
+
+      - name: tcp
+        description: "Total contract price."
+
+      - name: reservation_date
+        description: "Date the reservation was created."
+        tests:
+          - not_null
+
+sources:
+  - name: snow_source
+    description: "Source tables from SNOW"
+    database: MSITDBTSNOWGIT
+    schema: public
+    tables:
+      - name: reservationhdr   # match lowercase
+        description: "{{ doc('source_reservationhdr') }}"
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+        loaded_at_field: reservationdate   # also lowercase column name
+
+  - name: seeds
+    database: MSITDBTSNOWGIT
+    schema: SEEDS
+    tables:
+      - name: RESERVATIONHDRFORDEMO
+        description: "Reservation header demo table with ~1.5k rows from CSV"
