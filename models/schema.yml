@@ -47,8 +47,8 @@ models:
 
 sources:
   - name: neon_source
-    description: "Source tables from Neon Postgres"
-    database: source
+    description: "Source tables from SNOW"
+    database: MSITDBTSNOWGIT
     schema: public
     tables:
       - name: reservationhdr   # match lowercase
