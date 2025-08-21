@@ -13,7 +13,27 @@ seeds:
         description: "Text description of the account status."
       - name: CreatedDate
         description: "Original date of creation in source data."
-        
+  - name: Branch
+    description: "{{ doc('branch') }}"
+    columns:
+      - name: BranchID
+        description: "Unique identifier for the branch."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Name or label of the branch."
+      - name: Cluster
+        description: "Operational or regional cluster the branch belongs to."
+      - name: City
+        description: "City where the branch is located."
+      - name: Province
+        description: "Province where the branch is located."
+      - name: ZipCode
+        description: "Postal code of the branch location."
+
+  
+
 models:
   - name: stg_account_status
     description: "{{ doc('stg_account_status') }}"
@@ -31,19 +51,40 @@ models:
 
       - name: created_date
         description: "Date when the status was created in the system."
-
-  - name: dim_account_status
-    description: "{{ doc('dim_account_status') }}"
+    
+  - name: stg_branch
+    description: "{{ doc('stg_branch') }}"
     columns:
-      - name: status_code
-        description: "Status code as string"
+      - name: branchid
+        description: "Unique identifier for the branch."
         tests:
-          - unique
           - not_null
-      - name: status_description
-        description: "Status description"
-      - name: created_date
-        description: "Date the status was created"
+          - unique
+
+      - name: description
+        description: "Name or label of the branch."
+        tests:
+          - not_null
+
+      - name: cluster
+        description: "Operational or regional cluster the branch belongs to."
+        tests:
+         - not_null
+
+      - name: city
+        description: "City where the branch is located."
+        tests:
+          - not_null
+
+      - name: province
+        description: "Province where the branch is located."
+        tests:
+          - not_null
+
+      - name: zipcode
+        description: "Postal code of the branch location."
+        tests:
+          - not_null
 
   - name: stg_reservationhdr
     description: "{{ doc('stg_reservationhdr') }}"
@@ -73,6 +114,21 @@ models:
 
       - name: tcp
         description: "Total contract price"
+
+
+
+  - name: dim_account_status
+    description: "{{ doc('dim_account_status') }}"
+    columns:
+      - name: status_code
+        description: "Status code as string"
+        tests:
+          - unique
+          - not_null
+      - name: status_description
+        description: "Status description"
+      - name: created_date
+        description: "Date the status was created"
 
   - name: fact_reservations
     description: "{{ doc('fact_reservations') }}"
