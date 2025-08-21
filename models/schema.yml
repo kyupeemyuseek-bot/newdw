@@ -138,7 +138,45 @@ models:
         description: "Date the reservation was created."
         tests:
           - not_null
+  
+  - name: clustered_reservations
+    description: "{{ doc('clustered_reservations') }}"
+    columns:
+      - name: transactionno
+        description: "Unique identifier for each reservation transaction."
+        tests:
+          - not_null
+          - unique
 
+      - name: branchid
+        description: "Identifier of the branch where the reservation was made."
+        tests:
+          - not_null
+
+      - name: clientid
+        description: "Identifier of the client making the reservation."
+        tests:
+          - not_null
+
+      - name: reservationdate
+        description: "Date when the reservation was created."
+        tests:
+          - not_null
+
+      - name: lotprice
+        description: "Base price of the reserved lot."
+        tests:
+          - not_null
+
+      - name: vat
+        description: "Value-added tax applied to the lot price."
+        tests:
+          - not_null
+
+      - name: grosslotprice
+        description: "Total price including VAT."
+        tests:
+          - not_null
 sources:
   - name: snow_source
     description: "Source tables from SNOW"
