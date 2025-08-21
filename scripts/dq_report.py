@@ -4,7 +4,9 @@ from pathlib import Path
 # Paths
 target_dir = Path("target")
 run_results_path = target_dir / "run_results.json"
-output_path = target_dir / "dbt_data_quality_report.html"
+
+# Save into docs/ instead of target/
+output_path = Path("docs") / "dbt_data_quality_report.html"
 
 # Load dbt run results
 with open(run_results_path, "r") as f:
@@ -69,6 +71,9 @@ html += """
 </body>
 </html>
 """
+
+# Make sure docs/ exists
+Path("docs").mkdir(exist_ok=True)
 
 # Save
 with open(output_path, "w") as f:
