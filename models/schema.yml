@@ -46,7 +46,7 @@ models:
         description: "Date the status was created"
 
 sources:
-  - name: neon_source
+  - name: snow_source
     description: "Source tables from SNOW"
     database: MSITDBTSNOWGIT
     schema: public
