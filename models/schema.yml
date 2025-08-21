@@ -195,6 +195,22 @@ models:
         tests:
           - not_null
 
+  - name: dim_branch
+    description: "{{ doc('dim_branch') }}"
+    columns:
+    - name: branchid
+      description: "Branch ID as integer"
+      tests:
+        - unique
+        - not_null
+
+    - name: description
+      description: "Branch name or label"
+
+    - name: cluster
+      description: "Cluster grouping for the branch"
+
+
 sources:
   - name: snow_source
     description: "Source tables from SNOW"
