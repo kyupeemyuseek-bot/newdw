@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: AccountStatus
-    description: "Reference data for account statuses, loaded from CSV."
+    description: "{{ doc('account_status') }}"
     columns:
       - name: StatusCode
         description: "Unique code identifying the account status."
@@ -16,7 +16,7 @@ seeds:
         
 models:
   - name: stg_account_status
-    description: "Staging model for account status reference data seeded from CSV."
+    description: "{{ doc('stg_account_status') }}"
     columns:
       - name: status_code
         description: "Unique code identifying the account status."
@@ -33,7 +33,7 @@ models:
         description: "Date when the status was created in the system."
 
   - name: dim_account_status
-    description: "Dimension table for account statuses"
+    description: "{{ doc('dim_account_status') }}"
     columns:
       - name: status_code
         description: "Status code as string"
@@ -46,7 +46,7 @@ models:
         description: "Date the status was created"
 
   - name: stg_reservationhdr
-    description: "Staging model for reservation header data"
+    description: "{{ doc('stg_reservationhdr') }}"
     columns:
       - name: transaction_id
         description: "Primary key of the reservation"
@@ -75,7 +75,7 @@ models:
         description: "Total contract price"
 
   - name: fact_reservations
-    description: "Fact table for reservations containing business identifiers, foreign keys, measures, and reservation dates."
+    description: "{{ doc('fact_reservations') }}"
     columns:
       - name: transaction_id
         description: "Unique identifier for each reservation transaction."
@@ -146,7 +146,7 @@ sources:
     schema: public
     tables:
       - name: reservationhdr   # match lowercase
-        description: "Reservation header table"
+        description: "{{ doc('source_reservationhdr') }}"
         freshness:
           warn_after: {count: 1, period: day}
           error_after: {count: 2, period: day}
