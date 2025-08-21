@@ -151,3 +151,10 @@ sources:
           warn_after: {count: 1, period: day}
           error_after: {count: 2, period: day}
         loaded_at_field: reservationdate   # also lowercase column name
+
+  - name: seeds
+    database: MSITDBTSNOWGIT
+    schema: SEEDS
+    tables:
+      - name: RESERVATIONHDRFORDEMO
+        description: "Reservation header demo table with ~1.5k rows from CSV"
