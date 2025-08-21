@@ -6,26 +6,26 @@
 
 select
     -- business identifiers
-    transactionno,
-    branchid,
-    clientid,
-    unitcode,
+    transaction_id,
+    branch_id,
+    client_id,
+    unit_code,
 
     -- dimension keys (foreign keys)
-    statuscode,
-    fintypecode,
-    sourcecode,
+    status_code,
+    finance_type_code,
+    source_code,
 
     -- measures
-    lotprice,
+    lot_price,
     vat,
-    grosslotprice,
-    salesdisc,
-    netlotprice,
+    gross_lot_price,
+    sales_disc,
+    net_lot_price,
     misc,
     tcp,
 
     -- dates
-    reservationdate
+    reservation_date
 
 from {{ ref('stg_reservationhdr') }}
