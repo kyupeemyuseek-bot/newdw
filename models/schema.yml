@@ -44,3 +44,16 @@ models:
         description: "Status description"
       - name: created_date
         description: "Date the status was created"
+
+sources:
+  - name: neon_source
+    description: "Source tables from Neon Postgres"
+    database: source   # e.g. neondb
+    schema: public
+    tables:
+      - name: ReservationHDR
+        description: "Reservation header table"
+        freshness:
+          warn_after: {count: 1, period: day}
+          error_after: {count: 2, period: day}
+        loaded_at_field: ReservationDate
