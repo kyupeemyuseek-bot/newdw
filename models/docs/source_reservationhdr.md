@@ -1,16 +1,15 @@
-# Source: Reservation Header
+{% docs source_reservationhdr %}
+
+# Source: Reservation Header (`MSITDBTSNOWGIT.public.reservationhdr`)
 
 **Purpose:**  
-Reservation header table from source database `MSITDBTSNOWGIT.public`.  
+Raw reservation header table used by `stg_reservationhdr`.
 
-**Business Notes:**  
-- Represents reservations captured in the source system.  
-- Used as the raw input for the staging model `stg_reservationhdr`.  
-
-**Freshness:**  
-- Warn if data older than 1 day.  
-- Error if data older than 2 days.  
+**Freshness Policy:**  
+- Warn if older than 1 day.
+- Error if older than 2 days.
 
 **Lineage:**  
-- Source: `MSITDBTSNOWGIT.public.reservationhdr`  
-- Downstream: `stg_reservationhdr` → `fact_reservations`.  
+`MSITDBTSNOWGIT.public.reservationhdr` → `stg_reservationhdr` → `fact_reservations`.
+
+{% enddocs %}
