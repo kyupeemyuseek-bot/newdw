@@ -46,7 +46,19 @@ seeds:
       - name: RecDate
         description: "Timestamp of the latest update to the unit type record."
 
-  
+  - name: UnitClass
+    description: "{{ doc('unitclass') }}"
+    columns:
+      - name: UnitClassCode
+        description: "Unique code identifying the unit class."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Text description of the unit class."
+      - name: RecDate
+        description: "Original date of creation or update in source data."
+
 
 models:
   - name: stg_account_status
@@ -148,6 +160,25 @@ models:
         tests:
           - not_null
 
+  - name: stg_unitclass
+    description: "{{ doc('stg_unitclass') }}"
+    columns:
+      - name: unitclasscode
+        description: "Unique code identifying the unit class."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Text description of the unit class."
+        tests:
+          - not_null
+
+      - name: recdate
+        description: "Date when the unit class was created or last updated."
+
+
+
 
   - name: dim_account_status
     description: "{{ doc('dim_account_status') }}"
@@ -242,7 +273,6 @@ models:
     - name: cluster
       description: "Cluster grouping for the branch"
 
-
   - name: dim_unittype
     description: "{{ doc('dim_unittype') }}"
     columns:
@@ -257,6 +287,22 @@ models:
 
       - name: recdate
         description: "Timestamp of the latest update to the unit type record"
+
+  - name: dim_unitclass
+    description: "{{ doc('dim_unitclass') }}"
+    columns:
+      - name: unitclasscode
+        description: "Unit class code as string"
+        tests:
+          - unique
+          - not_null
+      - name: description
+        description: "Unit class description"
+      - name: recdate
+        description: "Date the unit class was created or updated"
+
+
+
 
 
 
