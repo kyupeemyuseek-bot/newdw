@@ -1,0 +1,40 @@
+<html><head><title>DBT Data Quality Report</title></head><body>
+<h1>DBT Data Quality Report</h1>
+<p>Generated on 2025-08-21 16:16:01.201038</p>
+<table border='1' cellpadding='5'>
+<tr><th>Status</th><th>Test</th><th>Execution Time (s)</th></tr>
+<tr><td>success</td><td>model.my_new_project.stg_reservationhdr</td><td>0.027680397033691406</td></tr>
+<tr><td>success</td><td>seed.my_new_project.AccountStatus</td><td>0.005164384841918945</td></tr>
+<tr><td>success</td><td>seed.my_new_project.Branch</td><td>0.004500865936279297</td></tr>
+<tr><td>success</td><td>seed.my_new_project.Customer</td><td>0.004208564758300781</td></tr>
+<tr><td>success</td><td>seed.my_new_project.FinancingType</td><td>0.004207611083984375</td></tr>
+<tr><td>success</td><td>seed.my_new_project.LotInventory</td><td>0.00414729118347168</td></tr>
+<tr><td>success</td><td>seed.my_new_project.ReservationHDR</td><td>0.006544828414916992</td></tr>
+<tr><td>success</td><td>seed.my_new_project.ReservationHDRF</td><td>0.005339384078979492</td></tr>
+<tr><td>success</td><td>seed.my_new_project.SellingPrice</td><td>0.003122568130493164</td></tr>
+<tr><td>success</td><td>seed.my_new_project.SourceofSale</td><td>0.002804279327392578</td></tr>
+<tr><td>success</td><td>seed.my_new_project.UnitClass</td><td>0.002697467803955078</td></tr>
+<tr><td>success</td><td>seed.my_new_project.UnitType</td><td>0.0027527809143066406</td></tr>
+<tr><td>success</td><td>model.my_new_project.fact_reservations</td><td>0.006688594818115234</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_stg_reservationhdr_reservation_date.11ba7cf88a</td><td>0.016207456588745117</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_stg_reservationhdr_transaction_id.a21a2b5b8c</td><td>0.006693840026855469</td></tr>
+<tr><td>success</td><td>test.my_new_project.unique_stg_reservationhdr_transaction_id.97e5ad44b4</td><td>0.008962154388427734</td></tr>
+<tr><td>success</td><td>model.my_new_project.stg_account_status</td><td>0.005373239517211914</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_AccountStatus_StatusCode.5f0532f84c</td><td>0.00832223892211914</td></tr>
+<tr><td>success</td><td>test.my_new_project.unique_AccountStatus_StatusCode.a4e05ebbea</td><td>0.00992441177368164</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_branch_id.78a10898ec</td><td>0.006954193115234375</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_client_id.824f1bbfcd</td><td>0.006972789764404297</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_finance_type_code.21fb55f17f</td><td>0.0071218013763427734</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_reservation_date.bae937b03c</td><td>0.006749391555786133</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_source_code.ba01722a47</td><td>0.006643056869506836</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_status_code.9f75068db0</td><td>0.0069963932037353516</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_transaction_id.8d2d23a610</td><td>0.0065937042236328125</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_fact_reservations_unit_code.fde627d221</td><td>0.006594181060791016</td></tr>
+<tr><td>success</td><td>test.my_new_project.unique_fact_reservations_transaction_id.20f49b3cd3</td><td>0.008243083953857422</td></tr>
+<tr><td>success</td><td>model.my_new_project.dim_account_status</td><td>0.005486249923706055</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_stg_account_status_status_code.dc40c34da8</td><td>0.0064165592193603516</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_stg_account_status_status_description.fab71e95a0</td><td>0.006501197814941406</td></tr>
+<tr><td>success</td><td>test.my_new_project.unique_stg_account_status_status_code.6ff903a1e3</td><td>0.0063724517822265625</td></tr>
+<tr><td>success</td><td>test.my_new_project.not_null_dim_account_status_status_code.c3ac8da954</td><td>0.006467580795288086</td></tr>
+<tr><td>success</td><td>test.my_new_project.unique_dim_account_status_status_code.ab5fad8b2d</td><td>0.006348609924316406</td></tr>
+</table></body></html>
