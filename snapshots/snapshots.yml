@@ -1,0 +1,23 @@
+version: 2
+
+snapshots:
+  - name: dim_account_status_snapshot
+    description: "Snapshot tracking changes in account status dimension over time"
+    config:
+      target_schema: snapshots
+      strategy: timestamp
+      unique_key: status_code
+      updated_at: created_date
+
+    columns:
+      - name: status_code
+        description: "Business code for the account status (natural key)"
+        tests:
+          - not_null
+          - unique
+
+      - name: status_description
+        description: "Textual description of the account status"
+
+      - name: created_date
+        description: "Date when the status was created"
