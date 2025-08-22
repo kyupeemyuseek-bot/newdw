@@ -1,3 +1,72 @@
+name: dbt test + publish report
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # allow pushing back to the repo
+
+jobs:
+  run-dbt-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true   # keep credentials for pushing
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt with Snowflake adapter
+        run: |
+          pip install dbt-core dbt-snowflake
+
+      - name: Create profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOL
+          newdw:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: XCPCNDY-WG64940
+                user: ANGELOALFONSO
+                password: VnpZWXpwnvf2Z4K
+                role: ACCOUNTADMIN
+                warehouse: COMPUTE_WH
+                database: MSITDBTSNOWGIT
+                schema: DWPRACTICE
+                threads: 1
+          EOL
+
+      - name: Run dbt deps
+        run: dbt deps --profile newdw
+
+      - name: Run dbt debug
+        run: dbt debug --profile newdw
+
+      - name: Run dbt test
+        run: dbt test --profile newdw
+
+      - name: Generate Data Quality Report
+        run: |
+          python scripts/dq_report.py
+
+      - name: Commit & Push report
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/dbt_data_quality_report.html
+          git commit -m "Update data quality report" || echo "No changes to commit"
+          git push
+
 name: Data Quality Report
 
 on:
@@ -50,3 +119,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+ 
