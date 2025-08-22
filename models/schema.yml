@@ -15,6 +15,23 @@ seeds:
         description: "Original date of creation in source data."
         
 models:
+    - name: stg_financingtype
+    description: "{{ doc('stg_financingtype') }}"
+    columns:
+      - name: fintypecode
+        description: "Unique identifier for the financing type."
+        tests:
+          - not_null
+          - unique
+      - name: description
+        description: "Name or label of the financing type."
+        tests:
+          - not_null
+      - name: recdate
+        description: "Date the financing type was recorded."
+        tests:
+          - not_null
+
   - name: stg_account_status
     description: "{{ doc('stg_account_status') }}"
     columns:
@@ -195,4 +212,5 @@ sources:
     schema: SEEDS
     tables:
       - name: RESERVATIONHDRFORDEMO
+
         description: "Reservation header demo table with ~1.5k rows from CSV"
