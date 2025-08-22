@@ -2,7 +2,7 @@ version: 2
 
 snapshots:
   - name: dim_account_status_snapshot
-    description: "Snapshot tracking changes in account status dimension over time"
+    description: "{{ doc('dim_account_status_snapshot') }}"
     config:
       target_schema: snapshots
       strategy: timestamp
@@ -21,3 +21,17 @@ snapshots:
 
       - name: created_date
         description: "Date when the status was created"
+  
+  - name: dim_financingtype_snapshot
+    description: "{{ doc('dim_financingtype_snapshot') }}"
+    columns:
+      - name: financing_type_code
+        description: "Unique business code for financing type."
+      - name: financing_type_description
+        description: "Business description of the financing type."
+      - name: record_date
+        description: "Original record date from the source system."
+      - name: dbt_valid_from
+        description: "Start timestamp when this version of the record became valid."
+      - name: dbt_valid_to
+        description: "End timestamp when this version of the record was superseded."

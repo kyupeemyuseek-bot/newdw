@@ -15,23 +15,33 @@ seeds:
         description: "Original date of creation in source data."
         
 models:
-    - name: stg_financingtype
+  - name: stg_financingtype
     description: "{{ doc('stg_financingtype') }}"
     columns:
-      - name: fintypecode
-        description: "Unique identifier for the financing type."
+      - name: financing_type_code
+        description: "Unique code identifying the financing type."
         tests:
           - not_null
           - unique
-      - name: description
-        description: "Name or label of the financing type."
+      - name: financing_type_description
+        description: "Text description of the financing type."
+      - name: record_date
+        description: "Date the financing type record was created."
+        
+  - name: dim_financingtype
+    description: "{{ doc('dim_financingtype') }}"
+    columns:
+      - name: financing_type_key
+        description: "Primary key for financing type dimension."
         tests:
           - not_null
-      - name: recdate
-        description: "Date the financing type was recorded."
-        tests:
-          - not_null
-
+          - unique
+      - name: financing_type_code
+        description: "Business code identifying the financing type."
+      - name: financing_type_description
+        description: "Text description of the financing type."
+      - name: record_date
+        description: "Date the financing type record was created."
   - name: stg_account_status
     description: "{{ doc('stg_account_status') }}"
     columns:
