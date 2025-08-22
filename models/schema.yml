@@ -85,6 +85,35 @@ seeds:
       - name: recdate
         description: "Original record date from the source system."
 
+  - name: LotInventory
+    description: "{{ doc('lotinventory') }}"
+    columns:
+      - name: unitcode
+        description: "Unique code identifying the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branchid
+        description: "Identifier for the branch where the unit is located."
+      - name: unittype
+        description: "Type of the unit (e.g., Lawn Lot, Garden Niche)."
+      - name: unitclass
+        description: "Classification of the unit."
+      - name: phase
+        description: "Development phase of the unit."
+      - name: section
+        description: "Section within the development."
+      - name: block
+        description: "Block number or identifier."
+      - name: lot
+        description: "Lot number or identifier."
+      - name: unitcost
+        description: "Cost of the unit."
+      - name: recuser
+        description: "User who recorded the entry."
+      - name: recdate
+        description: "Date and time the record was created."
+
 
 
 models:
@@ -238,6 +267,55 @@ models:
         tests:
           - not_null
 
+  - name: stg_lotinventory
+    description: "{{ doc('stg_lotinventory') }}"
+    columns:
+      - name: unitcode
+        description: "Unique identifier for the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branchid
+        description: "Branch ID associated with the unit."
+        tests:
+          - not_null
+      - name: unittype
+        description: "Type of unit."
+        tests:
+          - not_null
+      - name: unitclass
+        description: "Class of unit."
+        tests:
+          - not_null
+      - name: phase
+        description: "Phase of development."
+        tests:
+          - not_null
+      - name: section
+        description: "Section of the development."
+        tests:
+          - not_null
+      - name: block
+        description: "Block identifier."
+        tests:
+          - not_null
+      - name: lot
+        description: "Lot identifier."
+        tests:
+          - not_null
+      - name: unitcost
+        description: "Cost of the unit."
+        tests:
+          - not_null
+      - name: recuser
+        description: "User who recorded the unit."
+        tests:
+          - not_null
+      - name: recdate
+        description: "Timestamp of record creation."
+        tests:
+          - not_null
+
 
   - name: dim_account_status
     description: "{{ doc('dim_account_status') }}"
@@ -386,6 +464,34 @@ models:
       - name: record_date
         description: "Date the source of sale was recorded."
 
+  - name: dim_lotinventory
+    description: "{{ doc('dim_lotinventory') }}"
+    columns:
+      - name: unit_code
+        description: "Unique code for the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branch_id
+        description: "Branch identifier."
+      - name: unit_type
+        description: "Type of the unit."
+      - name: unit_class
+        description: "Classification of the unit."
+      - name: phase
+        description: "Development phase."
+      - name: section
+        description: "Section within the development."
+      - name: block
+        description: "Block identifier."
+      - name: lot
+        description: "Lot identifier."
+      - name: unit_cost
+        description: "Cost of the unit."
+      - name: recorded_by
+        description: "User who recorded the unit."
+      - name: record_date
+        description: "Date the unit was recorded."
 
 
 

@@ -3,8 +3,7 @@
 # Staging: Account Status
 
 **Purpose:**  
-Standardized staging model for account status reference data seeded from CSV.
-
+Standardized staging model for account status reference data seeded from CSV..
 **Business Notes:**  
 - Normalizes column names (snake_case).
 - Serves as the base layer for the account status dimension.
