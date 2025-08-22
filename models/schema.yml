@@ -59,6 +59,21 @@ seeds:
       - name: RecDate
         description: "Original date of creation or update in source data."
 
+  - name: FinancingType
+    description: "{{ doc('financingtype') }}"
+    columns:
+      - name: FinTypeCode
+        description: "Unique code identifying the financing type."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Text description of the financing type."
+      - name: RecDate
+        description: "Date the financing type record was created."
+
+
+
 
 models:
   - name: stg_account_status
@@ -177,6 +192,22 @@ models:
       - name: recdate
         description: "Date when the unit class was created or last updated."
 
+  - name: stg_financingtype
+    description: "{{ doc('stg_financingtype') }}"
+    columns:
+      - name: fintypecode
+        description: "Unique identifier for the financing type."
+        tests:
+          - not_null
+          - unique
+      - name: description
+        description: "Name or label of the financing type."
+        tests:
+          - not_null
+      - name: recdate
+        description: "Date the financing type was recorded."
+        tests:
+          - not_null
 
 
 
@@ -301,6 +332,18 @@ models:
       - name: recdate
         description: "Date the unit class was created or updated"
 
+  - name: dim_financingtype
+    description: "{{ doc('dim_financingtype') }}"
+    columns:
+      - name: fintypecode
+        description: "Financing type code as string."
+        tests:
+          - not_null
+          - unique
+      - name: description
+        description: "Financing type description."
+      - name: recdate
+        description: "Date the financing type was recorded."
 
 
 

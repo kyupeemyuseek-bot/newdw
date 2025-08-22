@@ -1,6 +1,6 @@
-{% docs seed_financingtype %}
+{% docs financingtype %}
 
-# Financing Type Seed
+# FinancingType Seed
 
 **Purpose:**    
 
