@@ -1,4 +1,4 @@
-{% docs seed_source_of_sale %}
+{% docs source_of_sale %}
 
 # Source of Sale Seed
 **Purpose:**
