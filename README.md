@@ -35,8 +35,6 @@ This project transforms raw reservation and account data into analytics-ready ta
 /tests            -- dbt tests
 /scripts          -- helper scripts (e.g., dq\_report.py)
 
-
-
 ---
 
 ## ⚡ Setup Instructions
@@ -72,7 +70,15 @@ dbt test       # run tests
 
 
 
+### 🏗️ Architecture / Workflow
 
+```mermaid
+flowchart LR
+    A[Sources] --> B[dbt Models]
+    B --> C[Tests]
+    C --> D[Reports]
+    D --> E[GitHub Pages]
+```
 ## 🧱 Models
 
 ### Staging
