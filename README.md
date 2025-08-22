@@ -5,6 +5,11 @@ This project transforms raw reservation and account data into analytics-ready ta
 
 ---
 
+[![Deploy Pages](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml)
+[![Data Quality](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dqrep.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dqrep.yml)
+
+---
+
 ## 🚀 Project Overview
 - **Warehouse:** Snowflake  
 - **Tooling:** dbt Core  
@@ -29,8 +34,6 @@ This project transforms raw reservation and account data into analytics-ready ta
 /macros           -- reusable SQL / Jinja macros
 /tests            -- dbt tests
 /scripts          -- helper scripts (e.g., dq\_report.py)
-
-
 
 ---
 
@@ -67,7 +70,15 @@ dbt test       # run tests
 
 
 
+### 🏗️ Architecture / Workflow
 
+```mermaid
+flowchart LR
+    A[Sources] --> B[dbt Models]
+    B --> C[Tests]
+    C --> D[Reports]
+    D --> E[GitHub Pages]
+```
 ## 🧱 Models
 
 ### Staging
@@ -95,22 +106,61 @@ dbt test       # run tests
 
 ## 📜 Change Log
 
+
 ### August 20, 2025
 
-* Added staging model `stg_reservationhdr`
-* Created unique & not\_null tests
+## 📅 Project Changelog
+
+### August 11, 2025
+* Started first repo for practice
+* Initial dbt setup and seed experiments
+
+### August 12, 2025
+* Tested connections to different databases
+* Researched available tools for the project
+
+### August 13, 2025
+* Tried out local development with **dbt Core**
+* Practiced running models locally
+
+### August 14, 2025
+* Discussed early project plans with collaborators
+
+### August 15, 2025
+* Tested connections to multiple databases (trial runs)
+* Evaluated possible targets
+
+### August 16, 2025
+* Practiced Git workflows (branches, commits, pull requests)
+* Decided which features to use for repo organization
+
+### August 17, 2025
+* Planned data warehouse & dbt strategy
+* Decided on accounts and tools to use
+
+### August 18, 2025
+* Created fresh repo (`newdw`) for a clean start
+* Set up base dbt project structure
+
+### August 19, 2025
+* Began adding initial data and seeds to Git
+
+### August 20, 2025
+* Started building `stg_` models and marts
+* Checked lineage in dbt
 
 ### August 21, 2025
-
-* Added fact model `fact_reservations` in marts schema
-* Tested Snowflake materialized views (limitations discovered)
-* Built experimental clustering model
+* Explored dbt **Docs**, **Reports**, and **Snapshots**
 
 ### August 22, 2025
 
 * Moved `dq_report.py` into `/scripts`
 * Generated first data quality report
-* Drafted README and docs structure
+* Drafted README and docs structure 
+* Created GitHub Actions workflows (`.yml`) for reports and dbt docs
+* Edited README to add badges and links
+* Updated `main` branch based on changes from feature branches
+
 
 ---
 
@@ -120,6 +170,11 @@ dbt test       # run tests
 * [ ] Add `schema.yml` docs for fact models
 * [ ] Try dbt snapshots for slowly changing dimensions
 * [ ] Automate DQ report generation in CI/CD
+* [ ] Make GitHub Pages `index.html` linking to reports, docs, and other artifacts
+* [ ] Review branches that are not updating / clean up unused ones
+* [ ] Reorganize folders for better project structure
+* [ ] Update `schema.yml` + `.md` files for seeds and practice schema
+* [ ] Explore BI tool options for project integration
 
 ---
 
