@@ -72,6 +72,18 @@ seeds:
       - name: RecDate
         description: "Date the financing type record was created."
 
+  - name: SourceOfSale
+    description: "{{ doc('source_of_sale') }}"
+    columns:
+      - name: sourcecode
+        description: "Unique code identifying the source of sale."
+        tests:
+          - not_null
+          - unique
+      - name: description
+        description: "Text description of the source of sale."
+      - name: recdate
+        description: "Original record date from the source system."
 
 
 
@@ -209,6 +221,22 @@ models:
         tests:
           - not_null
 
+  - name: stg_source_of_sale
+    description: "{{ doc('stg_source_of_sale') }}"
+    columns:
+      - name: sourcecode
+        description: "Unique identifier for the source of sale."
+        tests:
+          - not_null
+          - unique
+      - name: description
+        description: "Name or label of the source of sale."
+        tests:
+          - not_null
+      - name: recdate
+        description: "Timestamp when the source of sale was recorded."
+        tests:
+          - not_null
 
 
   - name: dim_account_status
@@ -345,6 +373,18 @@ models:
       - name: recdate
         description: "Date the financing type was recorded."
 
+  - name: dim_source_of_sale
+    description: "{{ doc('dim_source_of_sale') }}"
+    columns:
+      - name: source_code
+        description: "Source code as string."
+        tests:
+          - not_null
+          - unique
+      - name: source_description
+        description: "Description of the source of sale."
+      - name: record_date
+        description: "Date the source of sale was recorded."
 
 
 
