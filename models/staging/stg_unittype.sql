@@ -1,4 +1,3 @@
-
 -- models/staging/stg_unittype.sql
 
 with source as (
