@@ -1,3 +1,4 @@
+-- models/staging/stg_sourceof_sale.sql
 with source as (
     select *
     from {{ ref('SourceofSale') }}
