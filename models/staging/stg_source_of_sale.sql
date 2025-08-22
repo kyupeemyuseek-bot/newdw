@@ -1,28 +1,32 @@
--- models/staging/stg_source_of_sale.sql
-
 with source as (
     select *
     from {{ ref('SourceofSale') }}
 ),
 
--- Deduplicate: keep latest recdate per sourcecode
-deduped as (
-    select *
+prepped as (
+    select
+        trim(sourcecode) as sourcecode,
+        trim(description) as description,
+        coalesce(
+            try_to_timestamp_ntz(trim(recdate)::string, 'MM/DD/YYYY HH24:MI:SS'),
+            try_to_timestamp_ntz(trim(recdate)::string, 'MM/DD/YYYY HH24:MI'),
+            try_to_timestamp_ntz(trim(recdate)::string, 'MM/DD/YYYY')
+        ) as rec_ts
     from source
-    qualify row_number() over (
-        partition by trim(sourcecode)
-        order by recdate desc
-    ) = 1
 ),
 
--- Final column selection
-renamed as (
-    select
-        trim(sourcecode)                as source_code,
-        trim(description)               as source_description,
-        cast(recdate as timestamp)      as record_date
-    from deduped
+deduped as (
+    select *
+    from prepped
+    qualify row_number() over (
+        partition by sourcecode
+        order by rec_ts desc
+    ) = 1
 )
 
-select *
-from renamed
+select
+    sourcecode as source_code,
+    description as source_description,
+    to_date(rec_ts) as record_date
+from deduped
+
