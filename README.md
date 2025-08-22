@@ -5,7 +5,8 @@ This project transforms raw reservation and account data into analytics-ready ta
 
 ---
 
-[![Deploy Pages](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/deploy.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml)
+[![Deploy Pages](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml)
+
 
 - 📊 [Data Quality Report](https://kyupeemyuseek-bot.github.io/newdw/dbt_data_quality_report.html)  
 - 📚 [dbt Docs](https://kyupeemyuseek-bot.github.io/newdw/dbtdocs/)  
