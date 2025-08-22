@@ -13,6 +13,7 @@ seeds:
         description: "Text description of the account status."
       - name: CreatedDate
         description: "Original date of creation in source data."
+
   - name: Branch
     description: "{{ doc('branch') }}"
     columns:
@@ -31,6 +32,19 @@ seeds:
         description: "Province where the branch is located."
       - name: ZipCode
         description: "Postal code of the branch location."
+  
+  - name: UnitType
+    description: "{{ doc('dim_unittype') }}"
+    columns:
+      - name: UnitTypeCode
+        description: "Unique identifier for the unit type."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Business-friendly label of the unit type."
+      - name: RecDate
+        description: "Timestamp of the latest update to the unit type record."
 
   
 
@@ -115,6 +129,24 @@ models:
       - name: tcp
         description: "Total contract price"
 
+  - name: stg_unittype
+    description: "{{ doc('stg_unittype') }}"
+    columns:
+      - name: unittypecode
+        description: "Unique identifier for the unit type."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Business-friendly label of the unit type."
+        tests:
+          - not_null
+
+      - name: recdate
+        description: "Timestamp of the latest update to the unit type record."
+        tests:
+          - not_null
 
 
   - name: dim_account_status
@@ -209,6 +241,24 @@ models:
 
     - name: cluster
       description: "Cluster grouping for the branch"
+
+
+  - name: dim_unittype
+    description: "{{ doc('dim_unittype') }}"
+    columns:
+      - name: unittypecode
+        description: "Unit type code as string identifier"
+        tests:
+          - unique
+          - not_null
+
+      - name: description
+        description: "Business-friendly label of the unit type"
+
+      - name: recdate
+        description: "Timestamp of the latest update to the unit type record"
+
+
 
 
 sources:
