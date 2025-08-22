@@ -4,11 +4,9 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "0 0 * * *"   #optional, run daily at midnight UTC
 
 permissions:
-  contents: write    # needed for committing reports
+  contents: read     # no need to write since we don't commit
   pages: write       # needed for GitHub Pages deployment
   id-token: write    # required for Pages auth
 
@@ -19,8 +17,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -60,40 +56,15 @@ jobs:
         run: dbt test --profile newdw
 
       - name: Generate Data Quality Report
-        run: python scripts/dq_report.py
-
-      - name: Commit & Push report
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/dbt_data_quality_report.html
-          git commit -m "Update data quality report" || echo "No changes to commit"
-          git push
-
-  build-report:
-    needs: run-dbt-tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies (if any)
-        run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        run: python scripts/dq_report.py   # should output docs/dbt_data_quality_report.html
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs   # includes dbt_data_quality_report.html
+          path: docs   # 👈 everything in docs/ will be published
 
   deploy:
-    needs: build-report
+    needs: run-dbt-tests
     runs-on: ubuntu-latest
     environment:
       name: github-pages
