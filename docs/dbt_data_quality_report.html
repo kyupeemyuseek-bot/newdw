@@ -1,0 +1,524 @@
+
+<html>
+<head>
+    <title>DBT Data Quality Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .success { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+        .error { background-color: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <h1>DBT Data Quality Report</h1>
+    <table>
+        <tr>
+            <th>Test</th>
+            <th>Model / Source</th>
+            <th>Status</th>
+            <th>Failing Rows</th>
+            <th>Execution Time (s)</th>
+            <th>Message</th>
+        </tr>
+
+
+        <tr class="success">
+            <td>test.my_new_project.not_null_AccountStatus_StatusCode.5f0532f84c</td>
+            <td>5f0532f84c</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.31</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_dim_account_status_status_code.c3ac8da954</td>
+            <td>c3ac8da954</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.25</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_branch_id.78a10898ec</td>
+            <td>78a10898ec</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.27</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_client_id.824f1bbfcd</td>
+            <td>824f1bbfcd</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.58</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_finance_type_code.21fb55f17f</td>
+            <td>21fb55f17f</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.23</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_reservation_date.bae937b03c</td>
+            <td>bae937b03c</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.23</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_source_code.ba01722a47</td>
+            <td>ba01722a47</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.22</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_status_code.9f75068db0</td>
+            <td>9f75068db0</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.22</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_transaction_id.8d2d23a610</td>
+            <td>8d2d23a610</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.23</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_fact_reservations_unit_code.fde627d221</td>
+            <td>fde627d221</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.22</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_stg_account_status_status_code.dc40c34da8</td>
+            <td>dc40c34da8</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.28</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_stg_account_status_status_description.fab71e95a0</td>
+            <td>fab71e95a0</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.31</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_stg_reservationhdr_reservation_date.11ba7cf88a</td>
+            <td>11ba7cf88a</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.28</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.not_null_stg_reservationhdr_transaction_id.a21a2b5b8c</td>
+            <td>a21a2b5b8c</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.29</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.unique_AccountStatus_StatusCode.a4e05ebbea</td>
+            <td>a4e05ebbea</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.23</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.unique_dim_account_status_status_code.ab5fad8b2d</td>
+            <td>ab5fad8b2d</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.22</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.unique_fact_reservations_transaction_id.20f49b3cd3</td>
+            <td>20f49b3cd3</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.23</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.unique_stg_account_status_status_code.6ff903a1e3</td>
+            <td>6ff903a1e3</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.25</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="success">
+            <td>test.my_new_project.unique_stg_reservationhdr_transaction_id.97e5ad44b4</td>
+            <td>97e5ad44b4</td>
+            <td>pass</td>
+            <td>0</td>
+            <td>0.24</td>
+
+        <tr class="error">
+            <td>model.my_new_project.base_reservations</td>
+            <td>base_reservations</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.03</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>model.my_new_project.stg_reservationhdr</td>
+            <td>stg_reservationhdr</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.AccountStatus</td>
+            <td>AccountStatus</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.Branch</td>
+            <td>Branch</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.Customer</td>
+            <td>Customer</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.FinancingType</td>
+            <td>FinancingType</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.LotInventory</td>
+            <td>LotInventory</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.ReservationHDR</td>
+            <td>ReservationHDR</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.ReservationHDRF</td>
+            <td>ReservationHDRF</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.SellingPrice</td>
+            <td>SellingPrice</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.SourceofSale</td>
+            <td>SourceofSale</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.UnitClass</td>
+            <td>UnitClass</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>seed.my_new_project.UnitType</td>
+            <td>UnitType</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.0</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>model.my_new_project.reservation_summary_mv</td>
+            <td>reservation_summary_mv</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>model.my_new_project.fact_reservations</td>
+            <td>fact_reservations</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_stg_reservationhdr_reservation_date.11ba7cf88a</td>
+            <td>11ba7cf88a</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.02</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_stg_reservationhdr_transaction_id.a21a2b5b8c</td>
+            <td>a21a2b5b8c</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.unique_stg_reservationhdr_transaction_id.97e5ad44b4</td>
+            <td>97e5ad44b4</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>model.my_new_project.stg_account_status</td>
+            <td>stg_account_status</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_AccountStatus_StatusCode.5f0532f84c</td>
+            <td>5f0532f84c</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.unique_AccountStatus_StatusCode.a4e05ebbea</td>
+            <td>a4e05ebbea</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_branch_id.78a10898ec</td>
+            <td>78a10898ec</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_client_id.824f1bbfcd</td>
+            <td>824f1bbfcd</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_finance_type_code.21fb55f17f</td>
+            <td>21fb55f17f</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_reservation_date.bae937b03c</td>
+            <td>bae937b03c</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_source_code.ba01722a47</td>
+            <td>ba01722a47</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_status_code.9f75068db0</td>
+            <td>9f75068db0</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_transaction_id.8d2d23a610</td>
+            <td>8d2d23a610</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_fact_reservations_unit_code.fde627d221</td>
+            <td>fde627d221</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.unique_fact_reservations_transaction_id.20f49b3cd3</td>
+            <td>20f49b3cd3</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>model.my_new_project.dim_account_status</td>
+            <td>dim_account_status</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_stg_account_status_status_code.dc40c34da8</td>
+            <td>dc40c34da8</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_stg_account_status_status_description.fab71e95a0</td>
+            <td>fab71e95a0</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.unique_stg_account_status_status_code.6ff903a1e3</td>
+            <td>6ff903a1e3</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.not_null_dim_account_status_status_code.c3ac8da954</td>
+            <td>c3ac8da954</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+        <tr class="error">
+            <td>test.my_new_project.unique_dim_account_status_status_code.ab5fad8b2d</td>
+            <td>ab5fad8b2d</td>
+            <td>success</td>
+            <td>None</td>
+            <td>0.01</td>
+            <td>-</td>
+        </tr>
+    
+    </table>
+</body>
+</html>
