@@ -86,7 +86,7 @@ seeds:
         description: "Original record date from the source system."
 
   - name: LotInventory
-    description: "{{ doc('lotinventory') }}"
+    description: "{{ doc('LotInventory') }}"
     columns:
       - name: unitcode
         description: "Unique code identifying the unit."

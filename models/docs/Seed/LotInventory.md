@@ -1,4 +1,4 @@
-{% docs seed_lotinventory %}
+{% docs LotInventory %}
 
 # Lot Inventory Seed
 
