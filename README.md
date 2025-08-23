@@ -109,6 +109,35 @@ flowchart LR
 * `clustered_reservations` → clustering by `reservation_date, branchid` (Snowflake feature)
 * Materialized views (Snowflake only, not fully dbt-native)
 
+### Star Schema
+```mermaid
+erDiagram
+    FACT_RESERVATION {
+    }
+    DIM_UNITCLASS {
+    }
+    DIM_UNITTYPE {
+    }
+    DIM_ACCOUNT_STATUS {
+    }
+    DIM_BRANCH {
+    }
+    DIM_FINANCINGTYPE {
+    }
+    DIM_SOURCE_OF_SALE {
+    }
+    DIM_LOTINVENTORY {
+    }
+
+    DIM_LOTINVENTORY ||--o{ FACT_RESERVATION : "Unitcode"
+    DIM_UNITTYPE  ||--o{ DIM_LOTINVENTORY : "Unit_Type"
+    DIM_UNITCLASS ||--o{ DIM_LOTINVENTORY : "Unit_Class"
+    DIM_ACCOUNT_STATUS ||--o{ FACT_RESERVATION : "Status_Code"
+    DIM_BRANCH ||--o{ FACT_RESERVATION : "Branch"
+    DIM_FINANCINGTYPE ||--o{ FACT_RESERVATION : "Finance_Type_Code"
+    DIM_SOURCE_OF_SALE ||--o{ FACT_RESERVATION : "Source_Code"
+
+```
 ---
 
 ## 🧪 Tests & Data Quality
