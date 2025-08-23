@@ -41,15 +41,14 @@ Thanks to everyone who has contributed to this project!
 
 ## 🗂️ Project Structure
 
-
-/models
-/staging        -- staging models (source → clean)
-/marts          -- fact & dimension models
-/demo           -- experimental models (clustering, materialized views)
-/seeds            -- seed data for lookup tables
-/macros           -- reusable SQL / Jinja macros
-/tests            -- dbt tests
-/scripts          -- helper scripts (e.g., dq\_report.py)
+ - /models
+ - /staging        -- staging models (source → clean)
+ - /marts          -- fact & dimension models
+ - /demo           -- experimental models (clustering, materialized views)
+ - /seeds            -- seed data for lookup tables
+ - /macros           -- reusable SQL / Jinja macros
+ - /tests            -- dbt tests
+ - /scripts          -- helper scripts (e.g., dq\_report.py)
 
 ---
 
@@ -62,27 +61,26 @@ Thanks to everyone who has contributed to this project!
 
 ### 2. Configure `profiles.yml`
 Example:
-yaml
-my_project:
-  target: dev
-  outputs:
-    dev:
-      type: snowflake
-      account: <your_account>
-      user: <your_user>
-      password: <your_password>
-      role: <your_role>
-      database: <your_db>
-      warehouse: <your_wh>
-      schema: analytics
+ - yaml
+ - my_project:
+   - target: dev
+   - outputs:
+     - dev:
+       - type: snowflake
+       - account: <your_account>
+       - user: <your_user>
+       - password: <your_password>
+       - role: <your_role>
+       - database: <your_db>
+       - warehouse: <your_wh>
+       - schema: analytics
 
 
 ### 3. Run dbt
-
-bash
-dbt run        # run all models
-dbt run -m stg_reservationhdr   # run specific model
-dbt test       # run tests
+ - bash
+ - dbt run -- run all models
+ - dbt run -m stg_reservationhdr -- run specific model
+ - dbt test -- run tests
 
 
 
