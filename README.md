@@ -5,8 +5,23 @@ This project transforms raw reservation and account data into analytics-ready ta
 
 ---
 
+## 👥 Contributors
+
+Thanks to everyone who has contributed to this project!
+
+[![Contributors](https://img.shields.io/github/contributors/kyupeemyuseek-bot/newdw)](https://github.com/kyupeemyuseek-bot/newdw/graphs/contributors)
+
+<a href="https://github.com/kyupeemyuseek-bot/newdw/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kyupeemyuseek-bot/newdw" />
+</a>
+
+
+---
+
 [![Deploy Pages](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml)
 [![Data Quality](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dqrep.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dqrep.yml)
+[![dbt CI](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dbt%20CI%20tests.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dbt%20CI%20tests.yml)
+
 - 📊 [Data Quality Report](https://kyupeemyuseek-bot.github.io/newdw/dbt_data_quality_report.html)  
 - 📚 [dbt Docs](https://kyupeemyuseek-bot.github.io/newdw/dbtdocs/)  
 ---
