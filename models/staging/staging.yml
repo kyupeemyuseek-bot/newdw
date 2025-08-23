@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_reservationhdr
+    description: "{{ doc('stg_reservationhdr') }}"
+    columns:
+      - name: transaction_id
+        description: "Primary key of the reservation"
+        tests:
+          - unique
+          - not_null
+
+      - name: branch_id
+        description: "Branch identifier"
+
+      - name: reservation_date
+        description: "Date and time when the reservation was made"
+        tests:
+          - not_null
+
+      - name: client_id
+        description: "Foreign key to client"
+
+      - name: status_code
+        description: "Reservation status"
+
+      - name: lot_price
+        description: "Lot price before taxes/discounts"
+
+      - name: tcp
+        description: "Total contract price"
