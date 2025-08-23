@@ -7,7 +7,8 @@ This project transforms raw reservation and account data into analytics-ready ta
 
 [![Deploy Pages](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/pubdbtdocs.yml)
 [![Data Quality](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dqrep.yml/badge.svg)](https://github.com/kyupeemyuseek-bot/newdw/actions/workflows/dqrep.yml)
-
+- 📊 [Data Quality Report](https://kyupeemyuseek-bot.github.io/newdw/dbt_data_quality_report.html)  
+- 📚 [dbt Docs](https://kyupeemyuseek-bot.github.io/newdw/dbtdocs/)  
 ---
 
 ## 🚀 Project Overview
@@ -101,6 +102,7 @@ flowchart LR
 
 * Schema tests: `unique`, `not_null` on key fields
 * Custom data quality script: `scripts/dq_report.py` generates `dbt_data_quality_report.html`
+* Test Data Quality Report via Great Expectation [Great_Expectation](https://github.com/kyupeemyuseek-bot/newdw/tree/8f9225e48add3d7a4bcefbe467571f5768890405/)  
 
 ---
 

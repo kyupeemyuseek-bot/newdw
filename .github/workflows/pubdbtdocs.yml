@@ -1,7 +1,7 @@
 name: dbt docs generate + deploy
 
 on:
-  workflow_dispatch:   # run manually from Actions tab
+  workflow_dispatch:   # run manually from Actions tab 
 
 permissions:
   contents: read

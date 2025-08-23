@@ -1,12 +1,12 @@
-name: dbt test
+name: dbt CI Tests
 
 on:
- # push:
- # pull_request:
-  workflow_dispatch:
+  push:          # runs on push to ANY branch
+  pull_request:  # also runs for PRs
+  workflow_dispatch:  # lets you trigger manually from Actions tab
 
 jobs:
-  run-dbt-tests:
+  dbt-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install dbt with Snowflake adapter
-        run: |
-          pip install dbt-core dbt-snowflake
+        run: pip install dbt-core dbt-snowflake
 
-      - name: Create profiles.yml
+      - name: Configure dbt profile
         run: |
           mkdir -p ~/.dbt
           cat > ~/.dbt/profiles.yml <<EOL
@@ -41,8 +40,11 @@ jobs:
                 threads: 1
           EOL
 
+      - name: Install dbt deps
+        run: dbt deps --profile newdw
+
       - name: Run dbt debug
         run: dbt debug --profile newdw
 
-      - name: Run dbt test
+      - name: Run dbt tests
         run: dbt test --profile newdw
