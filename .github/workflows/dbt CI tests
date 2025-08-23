@@ -1,0 +1,49 @@
+name: dbt CI Tests
+
+on:
+  push:          # runs on push to ANY branch
+  pull_request:  # also runs for PRs
+
+jobs:
+  dbt-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt with Snowflake adapter
+        run: pip install dbt-core dbt-snowflake
+
+      - name: Configure dbt profile
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOL
+          newdw:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: XCPCNDY-WG64940
+                user: ANGELOALFONSO
+                password: VnpZWXpwnvf2Z4K
+                role: ACCOUNTADMIN
+                warehouse: COMPUTE_WH
+                database: MSITDBTSNOWGIT
+                schema: DWPRACTICE
+                threads: 1
+          EOL
+
+      - name: Install dbt deps
+        run: dbt deps --profile newdw
+
+      - name: Run dbt debug
+        run: dbt debug --profile newdw
+
+      - name: Run dbt tests
+        run: dbt test --profile newdw
