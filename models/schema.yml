@@ -15,6 +15,33 @@ seeds:
         description: "Original date of creation in source data."
         
 models:
+  - name: stg_financingtype
+    description: "{{ doc('stg_financingtype') }}"
+    columns:
+      - name: financing_type_code
+        description: "Unique code identifying the financing type."
+        tests:
+          - not_null
+          - unique
+      - name: financing_type_description
+        description: "Text description of the financing type."
+      - name: record_date
+        description: "Date the financing type record was created."
+        
+  - name: dim_financingtype
+    description: "{{ doc('dim_financingtype') }}"
+    columns:
+      - name: financing_type_key
+        description: "Primary key for financing type dimension."
+        tests:
+          - not_null
+          - unique
+      - name: financing_type_code
+        description: "Business code identifying the financing type."
+      - name: financing_type_description
+        description: "Text description of the financing type."
+      - name: record_date
+        description: "Date the financing type record was created."
   - name: stg_account_status
     description: "{{ doc('stg_account_status') }}"
     columns:
@@ -139,44 +166,6 @@ models:
         tests:
           - not_null
   
-  - name: clustered_reservations
-    description: "{{ doc('clustered_reservations') }}"
-    columns:
-      - name: transactionno
-        description: "Unique identifier for each reservation transaction."
-        tests:
-          - not_null
-          - unique
-
-      - name: branchid
-        description: "Identifier of the branch where the reservation was made."
-        tests:
-          - not_null
-
-      - name: clientid
-        description: "Identifier of the client making the reservation."
-        tests:
-          - not_null
-
-      - name: reservationdate
-        description: "Date when the reservation was created."
-        tests:
-          - not_null
-
-      - name: lotprice
-        description: "Base price of the reserved lot."
-        tests:
-          - not_null
-
-      - name: vat
-        description: "Value-added tax applied to the lot price."
-        tests:
-          - not_null
-
-      - name: grosslotprice
-        description: "Total price including VAT."
-        tests:
-          - not_null
 sources:
   - name: snow_source
     description: "Source tables from SNOW"
@@ -196,5 +185,5 @@ sources:
     tables:
       - name: RESERVATIONHDRFORDEMO
 
-        description: "Reservation header demo table with ~1.5k rows from CSV"
+        description: "{{ doc('source_reservationhdrfordemo') }}"
 
