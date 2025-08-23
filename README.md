@@ -102,7 +102,7 @@ flowchart LR
 
 * Schema tests: `unique`, `not_null` on key fields
 * Custom data quality script: `scripts/dq_report.py` generates `dbt_data_quality_report.html`
-* Test Data Quality Report via Great Expecation
+* Test Data Quality Report via Great Expectation 
 
 ---
 
