@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: accountstatus
-    description: "some desc"
+    description: "some des"
     columns:
       - name: statuscode
         description: "Business code for the account status"
