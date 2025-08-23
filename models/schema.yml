@@ -1,5 +1,19 @@
 version: 2
 
+seeds:
+  - name: AccountStatus
+    description: "{{ doc('account_status') }}"
+    columns:
+      - name: StatusCode
+        description: "Unique code identifying the account status."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Text description of the account status."
+      - name: CreatedDate
+        description: "Original date of creation in source data."
+        
 models:
   - name: stg_account_status
     description: "{{ doc('stg_account_status') }}"
@@ -183,3 +197,4 @@ sources:
       - name: RESERVATIONHDRFORDEMO
 
         description: "Reservation header demo table with ~1.5k rows from CSV"
+
