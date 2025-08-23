@@ -9,11 +9,12 @@ This project transforms raw reservation and account data into analytics-ready ta
 
 Thanks to everyone who has contributed to this project!
 
-[![Contributors](https://img.shields.io/github/contributors/angeloalfonso-msit/newdw)](https://github.com/angeloalfonso-msit/newdw/graphs/contributors)
+[![Contributors](https://img.shields.io/github/contributors/kyupeemyuseek-bot/newdw)](https://github.com/kyupeemyuseek-bot/newdw/graphs/contributors)
 
-<a href="https://github.com/angeloalfonso-msit/newdw/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=angeloalfonso-msit/newdw" />
+<a href="https://github.com/kyupeemyuseek-bot/newdw/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=kyupeemyuseek-bot/newdw" />
 </a>
+
 
 ---
 
