@@ -223,5 +223,5 @@ sources:
     tables:
       - name: RESERVATIONHDRFORDEMO
 
-        description: "Reservation header demo table with ~1.5k rows from CSV"
+        description: "{{ doc('source_reservationhdrfordemo') }}"
 

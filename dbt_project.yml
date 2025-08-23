@@ -43,7 +43,7 @@ models:
     marts:
       +materialized: table
       +schema: marts
-    seeds:
-      +schema: seeds      # all seeds go to seeds schema
     demo:
-      +schema: demo
+      +schema: demo    
+seeds:
+  +schema: seeds      # all seeds go to seeds schema
