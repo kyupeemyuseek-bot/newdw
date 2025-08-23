@@ -3,6 +3,7 @@ name: dbt CI Tests
 on:
   push:          # runs on push to ANY branch
   pull_request:  # also runs for PRs
+  workflow_dispatch:  # lets you trigger manually from Actions tab
 
 jobs:
   dbt-tests:
