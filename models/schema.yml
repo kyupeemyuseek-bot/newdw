@@ -13,159 +13,107 @@ seeds:
         description: "Text description of the account status."
       - name: CreatedDate
         description: "Original date of creation in source data."
-        
-models:
-  - name: stg_financingtype
-    description: "{{ doc('stg_financingtype') }}"
+
+  - name: Branch
+    description: "{{ doc('branch') }}"
     columns:
-      - name: financing_type_code
+      - name: BranchID
+        description: "Unique identifier for the branch."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Name or label of the branch."
+      - name: Cluster
+        description: "Operational or regional cluster the branch belongs to."
+      - name: City
+        description: "City where the branch is located."
+      - name: Province
+        description: "Province where the branch is located."
+      - name: ZipCode
+        description: "Postal code of the branch location."        
+
+  - name: LotInventory
+    description: "{{ doc('LotInventory') }}"
+    columns:
+      - name: unitcode
+        description: "Unique code identifying the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branchid
+        description: "Identifier for the branch where the unit is located."
+      - name: unittype
+        description: "Type of the unit (e.g., Lawn Lot, Garden Niche)."
+      - name: unitclass
+        description: "Classification of the unit."
+      - name: phase
+        description: "Development phase of the unit."
+      - name: section
+        description: "Section within the development."
+      - name: block
+        description: "Block number or identifier."
+      - name: lot
+        description: "Lot number or identifier."
+      - name: unitcost
+        description: "Cost of the unit."
+      - name: recuser
+        description: "User who recorded the entry."
+      - name: recdate
+        description: "Date and time the record was created."
+
+  - name: FinancingType
+    description: "{{ doc('financingtype') }}"
+    columns:
+      - name: financingtype
         description: "Unique code identifying the financing type."
         tests:
           - not_null
           - unique
-      - name: financing_type_description
+      - name: Description
         description: "Text description of the financing type."
-      - name: record_date
+      - name: RecDate
         description: "Date the financing type record was created."
-        
-  - name: dim_financingtype
-    description: "{{ doc('dim_financingtype') }}"
+
+  - name: SourceofSale
+    description: "{{ doc('source_of_sale') }}"
     columns:
-      - name: financing_type_key
-        description: "Primary key for financing type dimension."
+      - name: sourcecode
+        description: "Unique code identifying the source of sale."
         tests:
           - not_null
           - unique
-      - name: financing_type_code
-        description: "Business code identifying the financing type."
-      - name: financing_type_description
-        description: "Text description of the financing type."
-      - name: record_date
-        description: "Date the financing type record was created."
-  - name: stg_account_status
-    description: "{{ doc('stg_account_status') }}"
+      - name: description
+        description: "Text description of the source of sale."
+      - name: recdate
+        description: "Original record date from the source system."
+
+  - name: UnitClass
+    description: "{{ doc('unitclass') }}"
     columns:
-      - name: status_code
-        description: "Unique code identifying the account status."
+      - name: UnitClass
+        description: "Unique code identifying the unit class."
         tests:
           - not_null
           - unique
+      - name: Description
+        description: "Text description of the unit class."
+      - name: RecDate
+        description: "Original date of creation or update in source data."
 
-      - name: status_description
-        description: "Text description of the account status."
-        tests:
-          - not_null
-
-      - name: created_date
-        description: "Date when the status was created in the system."
-
-  - name: dim_account_status
-    description: "{{ doc('dim_account_status') }}"
+  - name: UnitType
+    description: "{{ doc('unittype') }}"
     columns:
-      - name: status_code
-        description: "Status code as string"
+      - name: UnitType
+        description: "Unique identifier for the unit type."
         tests:
+          - not_null
           - unique
-          - not_null
-      - name: status_description
-        description: "Status description"
-      - name: created_date
-        description: "Date the status was created"
+      - name: Description
+        description: "Business-friendly label of the unit type."
+      - name: RecDate
+        description: "Timestamp of the latest update to the unit type record."
 
-  - name: stg_reservationhdr
-    description: "{{ doc('stg_reservationhdr') }}"
-    columns:
-      - name: transaction_id
-        description: "Primary key of the reservation"
-        tests:
-          - unique
-          - not_null
-
-      - name: branch_id
-        description: "Branch identifier"
-
-      - name: reservation_date
-        description: "Date and time when the reservation was made"
-        tests:
-          - not_null
-
-      - name: client_id
-        description: "Foreign key to client"
-
-      - name: status_code
-        description: "Reservation status"
-
-      - name: lot_price
-        description: "Lot price before taxes/discounts"
-
-      - name: tcp
-        description: "Total contract price"
-
-  - name: fact_reservations
-    description: "{{ doc('fact_reservations') }}"
-    columns:
-      - name: transaction_id
-        description: "Unique identifier for each reservation transaction."
-        tests:
-          - unique
-          - not_null
-
-      - name: branch_id
-        description: "Foreign key reference to branch dimension."
-        tests:
-          - not_null
-
-      - name: client_id
-        description: "Foreign key reference to client dimension."
-        tests:
-          - not_null
-
-      - name: unit_code
-        description: "Foreign key reference to unit dimension."
-        tests:
-          - not_null
-
-      - name: status_code
-        description: "Reservation status code."
-        tests:
-          - not_null
-
-      - name: finance_type_code
-        description: "Reservation finance type code."
-        tests:
-          - not_null
-
-      - name: source_code
-        description: "Reservation source code."
-        tests:
-          - not_null
-
-      - name: lot_price
-        description: "Base price of the lot."
-
-      - name: vat
-        description: "Value-added tax amount."
-
-      - name: gross_lot_price
-        description: "Gross price of the lot including VAT."
-
-      - name: sales_disc
-        description: "Sales discount applied to the reservation."
-
-      - name: net_lot_price
-        description: "Net lot price after discounts."
-
-      - name: misc
-        description: "Miscellaneous charges."
-
-      - name: tcp
-        description: "Total contract price."
-
-      - name: reservation_date
-        description: "Date the reservation was created."
-        tests:
-          - not_null
-  
 sources:
   - name: snow_source
     description: "Source tables from SNOW"

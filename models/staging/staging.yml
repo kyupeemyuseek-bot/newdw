@@ -1,0 +1,197 @@
+version: 2
+
+models:
+  - name: stg_reservationhdr
+    description: "{{ doc('stg_reservationhdr') }}"
+    columns:
+      - name: transaction_id
+        description: "Primary key of the reservation"
+        tests:
+          - unique
+          - not_null
+
+      - name: branch_id
+        description: "Branch identifier"
+
+      - name: reservation_date
+        description: "Date and time when the reservation was made"
+        tests:
+          - not_null
+
+      - name: client_id
+        description: "Foreign key to client"
+
+      - name: status_code
+        description: "Reservation status"
+
+      - name: lot_price
+        description: "Lot price before taxes/discounts"
+
+      - name: tcp
+        description: "Total contract price"
+
+  - name: stg_lotinventory
+    description: "{{ doc('stg_lotinventory') }}"
+    columns:
+      - name: unit_code
+        description: "Unique identifier for the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branch_id
+        description: "Branch ID associated with the unit."
+        tests:
+          - not_null
+      - name: unit_type
+        description: "Type of unit."
+        tests:
+          - not_null
+      - name: unit_class
+        description: "Class of unit."
+        tests:
+          - not_null
+      - name: phase
+        description: "Phase of development."
+        tests:
+          - not_null
+      - name: section
+        description: "Section of the development."
+        tests:
+          - not_null
+      - name: block
+        description: "Block identifier."
+        tests:
+          - not_null
+      - name: lot
+        description: "Lot identifier."
+        tests:
+          - not_null
+      - name: unit_cost
+        description: "Cost of the unit."
+        tests:
+          - not_null
+      - name: recorded_by
+        description: "User who recorded the unit."
+        tests:
+          - not_null
+      - name: record_date
+        description: "Date of record creation."
+        tests:
+          - not_null
+
+  - name: stg_account_status
+    description: "{{ doc('stg_account_status') }}"
+    columns:
+      - name: status_code
+        description: "Unique code identifying the account status."
+        tests:
+          - not_null
+          - unique
+
+      - name: status_description
+        description: "Text description of the account status."
+        tests:
+          - not_null
+
+      - name: created_date
+        description: "Date when the status was created in the system."
+
+  - name: stg_financingtype
+    description: "{{ doc('stg_financingtype') }}"
+    columns:
+      - name: financing_type_code
+        description: "Unique code identifying the financing type."
+        tests:
+          - not_null
+          - unique
+      - name: financing_type_description
+        description: "Text description of the financing type."
+      - name: record_date
+        description: "Date the financing type record was created."
+
+  - name: stg_branch
+    description: "{{ doc('stg_branch') }}"
+    columns:
+      - name: branchid
+        description: "Unique identifier for the branch."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Name or label of the branch."
+        tests:
+          - not_null
+
+      - name: cluster
+        description: "Operational or regional cluster the branch belongs to."
+        tests:
+         - not_null
+
+      - name: city
+        description: "City where the branch is located."
+        tests:
+          - not_null
+
+      - name: province
+        description: "Province where the branch is located."
+        tests:
+          - not_null
+
+      - name: zipcode
+        description: "Postal code of the branch location."
+        tests:
+          - not_null
+
+  - name: stg_source_of_sale
+    description: "{{ doc('stg_source_of_sale') }}"
+    columns:
+      - name: source_code
+        description: "Unique identifier for the source of sale."
+        tests:
+          - not_null
+          - unique
+      - name: source_description
+        description: "Name or label of the source of sale."
+        tests:
+          - not_null
+      - name: record_date
+        description: "Timestamp when the source of sale was recorded."
+        tests:
+          - not_null
+
+  - name: stg_unitclass
+    description: "{{ doc('stg_unitclass') }}"
+    columns:
+      - name: unitclass
+        description: "Unique code identifying the unit class."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Text description of the unit class."
+        tests:
+          - not_null
+
+      - name: recdate
+        description: "Date when the unit class was created or last updated."
+
+  - name: stg_unittype
+    description: "{{ doc('stg_unittype') }}"
+    columns:
+      - name: unittype
+        description: "Unique identifier for the unit type."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Business-friendly label of the unit type."
+        tests:
+          - not_null
+
+      - name: recdate
+        description: "Timestamp of the latest update to the unit type record."
+        tests:
+          - not_null
