@@ -1,0 +1,124 @@
+version: 2
+
+models:
+  - name: fact_reservations
+    description: "{{ doc('fact_reservations') }}"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each reservation transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: branch_id
+        description: "Foreign key reference to branch dimension."
+        tests:
+          - not_null
+
+      - name: client_id
+        description: "Foreign key reference to client dimension."
+        tests:
+          - not_null
+
+      - name: unit_code
+        description: "Foreign key reference to unit dimension."
+        tests:
+          - not_null
+
+      - name: status_code
+        description: "Reservation status code."
+        tests:
+          - not_null
+
+      - name: finance_type_code
+        description: "Reservation finance type code."
+        tests:
+          - not_null
+
+      - name: source_code
+        description: "Reservation source code."
+        tests:
+          - not_null
+
+      - name: lot_price
+        description: "Base price of the lot."
+
+      - name: vat
+        description: "Value-added tax amount."
+
+      - name: gross_lot_price
+        description: "Gross price of the lot including VAT."
+
+      - name: sales_disc
+        description: "Sales discount applied to the reservation."
+
+      - name: net_lot_price
+        description: "Net lot price after discounts."
+
+      - name: misc
+        description: "Miscellaneous charges."
+
+      - name: tcp
+        description: "Total contract price."
+
+      - name: reservation_date
+        description: "Date the reservation was created."
+        tests:
+          - not_null
+
+  - name: dim_financingtype
+    description: "{{ doc('dim_financingtype') }}"
+    columns:
+      - name: financing_type_key
+        description: "Primary key for financing type dimension."
+        tests:
+          - not_null
+          - unique
+      - name: financing_type_code
+        description: "Business code identifying the financing type."
+      - name: financing_type_description
+        description: "Text description of the financing type."
+      - name: record_date
+        description: "Date the financing type record was created."
+
+  - name: dim_account_status
+    description: "{{ doc('dim_account_status') }}"
+    columns:
+      - name: status_code
+        description: "Status code as string"
+        tests:
+          - unique
+          - not_null
+      - name: status_description
+        description: "Status description"
+      - name: created_date
+        description: "Date the status was created"
+
+  - name: dim_lotinventory
+    description: "{{ doc('dim_lotinventory') }}"
+    columns:
+      - name: UNIT_CODE
+        description: "Unique code for the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branch_id
+        description: "Branch identifier."
+      - name: unit_type
+        description: "Type of the unit."
+      - name: unit_class
+        description: "Classification of the unit."
+      - name: phase
+        description: "Development phase."
+      - name: section
+        description: "Section within the development."
+      - name: block
+        description: "Block identifier."
+      - name: lot
+        description: "Lot identifier."
+      - name: unit_cost
+        description: "Cost of the unit."
+      - name: recorded_by
+        description: "User who recorded the unit."
+      - name: record_date
+        description: "Date the unit was recorded."
