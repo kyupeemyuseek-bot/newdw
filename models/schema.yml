@@ -13,8 +13,26 @@ seeds:
         description: "Text description of the account status."
       - name: CreatedDate
         description: "Original date of creation in source data."
-        
-       
+
+  - name: Branch
+    description: "{{ doc('branch') }}"
+    columns:
+      - name: BranchID
+        description: "Unique identifier for the branch."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Name or label of the branch."
+      - name: Cluster
+        description: "Operational or regional cluster the branch belongs to."
+      - name: City
+        description: "City where the branch is located."
+      - name: Province
+        description: "Province where the branch is located."
+      - name: ZipCode
+        description: "Postal code of the branch location."        
+
 
 sources:
   - name: snow_source
