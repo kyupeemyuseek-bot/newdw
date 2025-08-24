@@ -108,3 +108,37 @@ models:
         description: "Text description of the financing type."
       - name: record_date
         description: "Date the financing type record was created."
+
+  - name: stg_branch
+    description: "{{ doc('stg_branch') }}"
+    columns:
+      - name: branchid
+        description: "Unique identifier for the branch."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Name or label of the branch."
+        tests:
+          - not_null
+
+      - name: cluster
+        description: "Operational or regional cluster the branch belongs to."
+        tests:
+         - not_null
+
+      - name: city
+        description: "City where the branch is located."
+        tests:
+          - not_null
+
+      - name: province
+        description: "Province where the branch is located."
+        tests:
+          - not_null
+
+      - name: zipcode
+        description: "Postal code of the branch location."
+        tests:
+          - not_null
