@@ -33,6 +33,86 @@ seeds:
       - name: ZipCode
         description: "Postal code of the branch location."        
 
+  - name: LotInventory
+    description: "{{ doc('LotInventory') }}"
+    columns:
+      - name: unitcode
+        description: "Unique code identifying the unit."
+        tests:
+          - not_null
+          - unique
+      - name: branchid
+        description: "Identifier for the branch where the unit is located."
+      - name: unittype
+        description: "Type of the unit (e.g., Lawn Lot, Garden Niche)."
+      - name: unitclass
+        description: "Classification of the unit."
+      - name: phase
+        description: "Development phase of the unit."
+      - name: section
+        description: "Section within the development."
+      - name: block
+        description: "Block number or identifier."
+      - name: lot
+        description: "Lot number or identifier."
+      - name: unitcost
+        description: "Cost of the unit."
+      - name: recuser
+        description: "User who recorded the entry."
+      - name: recdate
+        description: "Date and time the record was created."
+
+  - name: FinancingType
+    description: "{{ doc('financingtype') }}"
+    columns:
+      - name: financingtype
+        description: "Unique code identifying the financing type."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Text description of the financing type."
+      - name: RecDate
+        description: "Date the financing type record was created."
+
+  - name: SourceofSale
+    description: "{{ doc('source_of_sale') }}"
+    columns:
+      - name: sourcecode
+        description: "Unique code identifying the source of sale."
+        tests:
+          - not_null
+          - unique
+      - name: description
+        description: "Text description of the source of sale."
+      - name: recdate
+        description: "Original record date from the source system."
+
+  - name: UnitClass
+    description: "{{ doc('unitclass') }}"
+    columns:
+      - name: UnitClass
+        description: "Unique code identifying the unit class."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Text description of the unit class."
+      - name: RecDate
+        description: "Original date of creation or update in source data."
+
+  - name: UnitType
+    description: "{{ doc('unittype') }}"
+    columns:
+      - name: UnitType
+        description: "Unique identifier for the unit type."
+        tests:
+          - not_null
+          - unique
+      - name: Description
+        description: "Business-friendly label of the unit type."
+      - name: RecDate
+        description: "Timestamp of the latest update to the unit type record."
 
 sources:
   - name: snow_source

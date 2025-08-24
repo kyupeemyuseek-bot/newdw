@@ -122,3 +122,60 @@ models:
         description: "User who recorded the unit."
       - name: record_date
         description: "Date the unit was recorded."
+
+  - name: dim_branch
+    description: "{{ doc('dim_branch') }}"
+    columns:
+    - name: branchid
+      description: "Branch ID as integer"
+      tests:
+        - unique
+        - not_null
+
+    - name: description
+      description: "Branch name or label"
+
+    - name: cluster
+      description: "Cluster grouping for the branch"
+
+  - name: dim_source_of_sale
+    description: "{{ doc('dim_source_of_sale') }}"
+    columns:
+      - name: source_code
+        description: "Source code as string."
+        tests:
+          - not_null
+          - unique
+      - name: source_description
+        description: "Description of the source of sale."
+      - name: record_date
+        description: "Date the source of sale was recorded."
+
+  - name: dim_unitclass
+    description: "{{ doc('dim_unitclass') }}"
+    columns:
+      - name: unitclass
+        description: "Unit class code as string"
+        tests:
+          - unique
+          - not_null
+      - name: description
+        description: "Unit class description"
+      - name: recdate
+        description: "Date the unit class was created or updated"
+
+  - name: dim_unittype
+    description: "{{ doc('dim_unittype') }}"
+    columns:
+      - name: unittype
+        description: "Unit type code as string identifier"
+        tests:
+          - unique
+          - not_null
+
+      - name: description
+        description: "Business-friendly label of the unit type"
+
+      - name: recdate
+        description: "Timestamp of the latest update to the unit type record"
+

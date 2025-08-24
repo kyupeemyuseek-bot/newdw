@@ -142,3 +142,56 @@ models:
         description: "Postal code of the branch location."
         tests:
           - not_null
+
+  - name: stg_source_of_sale
+    description: "{{ doc('stg_source_of_sale') }}"
+    columns:
+      - name: source_code
+        description: "Unique identifier for the source of sale."
+        tests:
+          - not_null
+          - unique
+      - name: source_description
+        description: "Name or label of the source of sale."
+        tests:
+          - not_null
+      - name: record_date
+        description: "Timestamp when the source of sale was recorded."
+        tests:
+          - not_null
+
+  - name: stg_unitclass
+    description: "{{ doc('stg_unitclass') }}"
+    columns:
+      - name: unitclass
+        description: "Unique code identifying the unit class."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Text description of the unit class."
+        tests:
+          - not_null
+
+      - name: recdate
+        description: "Date when the unit class was created or last updated."
+
+  - name: stg_unittype
+    description: "{{ doc('stg_unittype') }}"
+    columns:
+      - name: unittype
+        description: "Unique identifier for the unit type."
+        tests:
+          - not_null
+          - unique
+
+      - name: description
+        description: "Business-friendly label of the unit type."
+        tests:
+          - not_null
+
+      - name: recdate
+        description: "Timestamp of the latest update to the unit type record."
+        tests:
+          - not_null
