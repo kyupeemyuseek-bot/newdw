@@ -108,57 +108,42 @@ echo "🎉 dbt setup complete! Edit your models in the 'models' folder."
 
 ---
 
-2️⃣ dbt Cloud / Web UI Setup (Snowflake)
+##  dbt Cloud / Web UI Setup (Snowflake)
 
-Sign up for dbt Cloud
-Go to dbt Cloud
- and create an account.
+Follow these steps to connect your dbt project to dbt Cloud:
 
-Create a new project
+### 1. Sign up for dbt Cloud
+Go to [dbt Cloud](https://cloud.getdbt.com/) and create an account.
 
-Choose Connect to Git
+### 2. Create a new project
+- Choose **Connect to Git**
+- Select your Git provider (GitHub, GitLab, Bitbucket)
+- Authorize dbt Cloud to access your repository
+- Pick the repository containing your dbt project
 
-Select your Git provider (GitHub, GitLab, Bitbucket)
+### 3. Set up your environment (Snowflake)
+- Choose **Snowflake** as the data warehouse
+- Enter the same credentials used in your `profiles.yml`:
+  - `Account`, `User`, `Password`
+  - `Role`, `Database`, `Warehouse`, `Schema`
 
-Authorize dbt Cloud to access your repository
+### 4. Configure a dbt Cloud job (optional)
+- Schedule runs (daily, hourly, etc.)
+- Run all models or select specific models
+- Add notifications for success or failure
 
-Pick the repository containing your dbt project
+### 5. Run dbt commands via the web UI
+- `dbt debug` → Verify Snowflake connection
+- `dbt run` → Run all models
+- `dbt test` → Run tests
+- Use the **IDE in dbt Cloud** to edit models online
 
-Set up your environment (Snowflake)
+### 6. Version control integration
+- Changes made in the web UI can be committed via Git
+- Use pull requests for code review and merging
 
-Choose Snowflake as the data warehouse
+> ✅ dbt Cloud provides a web IDE, scheduler, Snowflake integration, and Git workflow without requiring local dbt installation.
 
-Enter the same credentials used in profiles.yml:
-
-Account, User, Password
-
-Role, Database, Warehouse, Schema
-
-Configure a dbt Cloud job (optional)
-
-Schedule runs (daily, hourly, etc.)
-
-Run all models or select specific models
-
-Add notifications for success or failure
-
-Run dbt commands via the web UI
-
-dbt debug → Verify Snowflake connection
-
-dbt run → Run all models
-
-dbt test → Run tests
-
-Use the IDE in dbt Cloud to edit models online
-
-Version control integration
-
-Changes made in the web UI can be committed via Git
-
-Use pull requests for code review and merging
-
-✅ dbt Cloud provides a web IDE, scheduler, Snowflake integration, and Git workflow without requiring local dbt installation.
 
 --
 
