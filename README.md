@@ -52,43 +52,61 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-###dbt Setup & Usage Guide
-###⚡ 1️⃣ Termux + dbt Core Setup (Snowflake)
+Ah — now I see exactly what’s happening. What you pasted **looks broken** because:
 
-###Run these commands in Termux to install Python, Rust, dbt, and initialize a project:
+1. Your Markdown lost **headings (`#`, `##`, `###`)** at the top of sections.
+2. Bulleted lists and code blocks are missing the proper markers (`bash` or `-`), so GitHub renders everything as a single paragraph.
+3. There’s no **continuous Markdown block** — the “2️⃣ dbt Cloud / Web UI Setup” section is plain text, not part of the Markdown structure.
 
-### Update Termux packages
--pkg update && pkg upgrade -y
+To make it **fully continuous, readable, and copy-paste-ready**:
 
-### Install dependencies
--pkg install git python python-pip clang make rust -y
+* Keep **headings** (`#`, `##`, `###`)
+* Use **code blocks** for commands (` ```bash ... ``` `)
+* Use **bullets (`-`)** for lists
+* Keep spacing consistent
 
-### Upgrade pip, setuptools, wheel
--pip install --upgrade pip setuptools wheel
+Here’s the **correct continuous version**, ready to paste into GitHub README edit mode:
 
-### Install dbt Core (Snowflake adapter)
--pip install dbt-snowflake
+````markdown
+# dbt Setup & Usage Guide
 
-### Create dbt profiles folder
--mkdir -p ~/.dbt
+## ⚡ 1️⃣ Termux + dbt Core Setup (Snowflake)
 
-### Create example profiles.yml
--cat > ~/.dbt/profiles.yml <<EOL
-### my_project:
-###   target: dev
-###   outputs:
-###     dev:
-###       type: snowflake
-###       account: <your_account>
-###       user: <your_user>
-###       password: <your_password>
-###       role: <your_role>
-###       database: <your_db>
-###       warehouse: <your_wh>
-###       schema: analytics
-### EOL
+Run these commands in Termux to install Python, Rust, dbt, and initialize a project:
 
-### echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit with your Snowflake credentials."
+```bash
+# Update Termux packages
+pkg update && pkg upgrade -y
+
+# Install dependencies
+pkg install git python python-pip clang make rust -y
+
+# Upgrade pip, setuptools, wheel
+pip install --upgrade pip setuptools wheel
+
+# Install dbt Core (Snowflake adapter)
+pip install dbt-snowflake
+
+# Create dbt profiles folder
+mkdir -p ~/.dbt
+
+# Create example profiles.yml
+cat > ~/.dbt/profiles.yml <<EOL
+my_project:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: <your_account>
+      user: <your_user>
+      password: <your_password>
+      role: <your_role>
+      database: <your_db>
+      warehouse: <your_wh>
+      schema: analytics
+EOL
+
+echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit with your Snowflake credentials."
 
 # Initialize a new dbt project
 dbt init my_project
@@ -107,47 +125,67 @@ dbt run -m stg_reservationhdr
 dbt test
 
 echo "🎉 dbt Core setup complete!"
+````
 
+> ⚠️ Older or low-end devices may experience slow installations, especially Rust dependencies.
 
-⚠️ Older or low-end devices may experience slow
-
----
-
-##  dbt Cloud / Web UI Setup (Snowflake)
+## 2️⃣ dbt Cloud / Web UI Setup (Snowflake)
 
 Follow these steps to connect your dbt project to dbt Cloud:
 
 ### 1. Sign up for dbt Cloud
+
 Go to [dbt Cloud](https://cloud.getdbt.com/) and create an account.
 
 ### 2. Create a new project
-- Choose **Connect to Git**
-- Select your Git provider (GitHub, GitLab, Bitbucket)
-- Authorize dbt Cloud to access your repository
-- Pick the repository containing your dbt project
+
+* Choose **Connect to Git**
+* Select your Git provider (GitHub, GitLab, Bitbucket)
+* Authorize dbt Cloud to access your repository
+* Pick the repository containing your dbt project
 
 ### 3. Set up your environment (Snowflake)
-- Choose **Snowflake** as the data warehouse
-- Enter the same credentials used in your `profiles.yml`:
-  - `Account`, `User`, `Password`
-  - `Role`, `Database`, `Warehouse`, `Schema`
+
+* Choose **Snowflake** as the data warehouse
+* Enter the same credentials used in your `profiles.yml`:
+
+  * `Account`, `User`, `Password`
+  * `Role`, `Database`, `Warehouse`, `Schema`
 
 ### 4. Configure a dbt Cloud job (optional)
-- Schedule runs (daily, hourly, etc.)
-- Run all models or select specific models
-- Add notifications for success or failure
+
+* Schedule runs (daily, hourly, etc.)
+* Run all models or select specific models
+* Add notifications for success or failure
 
 ### 5. Run dbt commands via the web UI
-- `dbt debug` → Verify Snowflake connection
-- `dbt run` → Run all models
-- `dbt test` → Run tests
-- Use the **IDE in dbt Cloud** to edit models online
+
+* `dbt debug` → Verify Snowflake connection
+* `dbt run` → Run all models
+* `dbt test` → Run tests
+* Use the **IDE in dbt Cloud** to edit models online
 
 ### 6. Version control integration
-- Changes made in the web UI can be committed via Git
-- Use pull requests for code review and merging
+
+* Changes made in the web UI can be committed via Git
+* Use pull requests for code review and merging
 
 > ✅ dbt Cloud provides a web IDE, scheduler, Snowflake integration, and Git workflow without requiring local dbt installation.
+
+```
+
+---
+
+✅ **Now everything is continuous**:  
+
+- Part 1 (Termux/dbt Core) and Part 2 (dbt Cloud) are in **one Markdown file**.  
+- Headings, code blocks, and bullets are correctly formatted.  
+- Copy-pasting this into **GitHub edit mode** will render it **cleanly**, readable, and professional.  
+
+If you want, I can also **add a “Quick Start” one-paste block** at the very top so beginners can literally copy everything and run Termux + dbt Core in one go.  
+
+Do you want me to do that?
+```
 
 
 --
