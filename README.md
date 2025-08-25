@@ -52,37 +52,115 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-## ⚡ Setup Instructions
+# ⚡ dbt Core Setup on Termux (Snowflake) - Single Copy-Paste
 
-### 1. Prerequisites
-- Python 3.8+  
-- dbt Core installed (`pip install dbt-snowflake`)  
-- Access to Snowflake warehouse  
+# 1️⃣ Update Termux packages
+pkg update && pkg upgrade -y
 
-### 2. Configure `profiles.yml`
-Example:
- - yaml
- - my_project:
-   - target: dev
-   - outputs:
-     - dev:
-       - type: snowflake
-       - account: <your_account>
-       - user: <your_user>
-       - password: <your_password>
-       - role: <your_role>
-       - database: <your_db>
-       - warehouse: <your_wh>
-       - schema: analytics
+# 2️⃣ Install dependencies
+pkg install git python python-pip clang make rust -y
 
+# 3️⃣ Upgrade pip, setuptools, wheel
+pip install --upgrade pip setuptools wheel
 
-### 3. Run dbt
- - bash
- - dbt run -- run all models
- - dbt run -m stg_reservationhdr -- run specific model
- - dbt test -- run tests
+# 4️⃣ Install dbt Core (Snowflake adapter)
+pip install dbt-snowflake
 
+# 5️⃣ Create dbt profiles folder if it doesn't exist
+mkdir -p ~/.dbt
 
+# 6️⃣ Create example profiles.yml
+cat > ~/.dbt/profiles.yml <<EOL
+my_project:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: <your_account>
+      user: <your_user>
+      password: <your_password>
+      role: <your_role>
+      database: <your_db>
+      warehouse: <your_wh>
+      schema: analytics
+EOL
+
+echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit it with your Snowflake credentials."
+
+# 7️⃣ Initialize a new dbt project
+dbt init my_project
+cd my_project
+
+echo "✅ dbt project 'my_project' initialized."
+
+# 8️⃣ Optional: clone an existing repository
+# git clone <your_repo_url>
+# cd <repo_name>
+# Update profiles.yml if needed
+
+# 9️⃣ Test the setup
+dbt debug
+dbt run
+dbt run -m stg_reservationhdr
+dbt test
+
+echo "🎉 dbt setup complete! Edit your models in the 'models' folder."
+
+---
+
+2️⃣ dbt Cloud / Web UI Setup (Snowflake)
+
+Sign up for dbt Cloud
+Go to dbt Cloud
+ and create an account.
+
+Create a new project
+
+Choose Connect to Git
+
+Select your Git provider (GitHub, GitLab, Bitbucket)
+
+Authorize dbt Cloud to access your repository
+
+Pick the repository containing your dbt project
+
+Set up your environment (Snowflake)
+
+Choose Snowflake as the data warehouse
+
+Enter the same credentials used in profiles.yml:
+
+Account, User, Password
+
+Role, Database, Warehouse, Schema
+
+Configure a dbt Cloud job (optional)
+
+Schedule runs (daily, hourly, etc.)
+
+Run all models or select specific models
+
+Add notifications for success or failure
+
+Run dbt commands via the web UI
+
+dbt debug → Verify Snowflake connection
+
+dbt run → Run all models
+
+dbt test → Run tests
+
+Use the IDE in dbt Cloud to edit models online
+
+Version control integration
+
+Changes made in the web UI can be committed via Git
+
+Use pull requests for code review and merging
+
+✅ dbt Cloud provides a web IDE, scheduler, Snowflake integration, and Git workflow without requiring local dbt installation.
+
+--
 
 ### 🏗️ Architecture / Workflow
 
@@ -205,20 +283,29 @@ erDiagram
 * Edited README to add badges and links
 * Updated `main` branch based on changes from feature branches
 
+### August 23, 2025
+
+* Added snapshots
+* Connected merge on main branch
+* Added MDs
+### August 24, 2025
+
+*Completed dbt models
+*Connected to Power BI
 
 ---
 
 ## ✅ Next Steps / TODO
 
-* [ ] Fix failing unique test on `stg_account_status`
-* [ ] Add `schema.yml` docs for fact models
-* [ ] Try dbt snapshots for slowly changing dimensions
-* [ ] Automate DQ report generation in CI/CD
+* [X] Fix failing unique test on `stg_account_status`
+* [X] Add `schema.yml` docs for fact models
+* [x] Try dbt snapshots for slowly changing dimensions
+* [x] Automate DQ report generation in CI/CD
 * [ ] Make GitHub Pages `index.html` linking to reports, docs, and other artifacts
-* [ ] Review branches that are not updating / clean up unused ones
-* [ ] Reorganize folders for better project structure
-* [ ] Update `schema.yml` + `.md` files for seeds and practice schema
-* [ ] Explore BI tool options for project integration
+* [x] Review branches that are not updating / clean up unused ones
+* [x] Reorganize folders for better project structure
+* [x] Update `schema.yml` + `.md` files for seeds and practice schema
+* [x] Explore BI tool options for project integration
 
 ---
 
