@@ -52,43 +52,43 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-dbt Setup & Usage Guide
-⚡ 1️⃣ Termux + dbt Core Setup (Snowflake)
+###dbt Setup & Usage Guide
+###⚡ 1️⃣ Termux + dbt Core Setup (Snowflake)
 
-Run these commands in Termux to install Python, Rust, dbt, and initialize a project:
+###Run these commands in Termux to install Python, Rust, dbt, and initialize a project:
 
-# Update Termux packages
-pkg update && pkg upgrade -y
+### Update Termux packages
+-pkg update && pkg upgrade -y
 
-# Install dependencies
-pkg install git python python-pip clang make rust -y
+### Install dependencies
+-pkg install git python python-pip clang make rust -y
 
-# Upgrade pip, setuptools, wheel
-pip install --upgrade pip setuptools wheel
+### Upgrade pip, setuptools, wheel
+-pip install --upgrade pip setuptools wheel
 
-# Install dbt Core (Snowflake adapter)
-pip install dbt-snowflake
+### Install dbt Core (Snowflake adapter)
+-pip install dbt-snowflake
 
-# Create dbt profiles folder
-mkdir -p ~/.dbt
+### Create dbt profiles folder
+-mkdir -p ~/.dbt
 
-# Create example profiles.yml
-cat > ~/.dbt/profiles.yml <<EOL
-my_project:
-  target: dev
-  outputs:
-    dev:
-      type: snowflake
-      account: <your_account>
-      user: <your_user>
-      password: <your_password>
-      role: <your_role>
-      database: <your_db>
-      warehouse: <your_wh>
-      schema: analytics
-EOL
+### Create example profiles.yml
+-cat > ~/.dbt/profiles.yml <<EOL
+### my_project:
+###   target: dev
+###   outputs:
+###     dev:
+###       type: snowflake
+###       account: <your_account>
+###       user: <your_user>
+###       password: <your_password>
+###       role: <your_role>
+###       database: <your_db>
+###       warehouse: <your_wh>
+###       schema: analytics
+### EOL
 
-echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit with your Snowflake credentials."
+### echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit with your Snowflake credentials."
 
 # Initialize a new dbt project
 dbt init my_project
