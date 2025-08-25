@@ -52,7 +52,7 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-# ⚡ dbt Core Setup on Termux (Snowflake) - Single Copy-Paste
+### ⚡ dbt Core Setup on Termux (Snowflake) - Single Copy-Paste
 
 # 1️⃣ Update Termux packages
 pkg update && pkg upgrade -y
