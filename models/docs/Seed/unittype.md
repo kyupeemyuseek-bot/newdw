@@ -1,4 +1,4 @@
-{% docs seed_unittype %}
+{% docs unittype %}
 
 # Unit Type Seed
 **Purpose:**

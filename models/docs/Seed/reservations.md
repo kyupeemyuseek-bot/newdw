@@ -1,4 +1,4 @@
-{% docs fact_reservations %}
+{% docs reservations %}
 
 # Fact: Reservations
 

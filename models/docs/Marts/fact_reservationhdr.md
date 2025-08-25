@@ -1,4 +1,4 @@
-{% docs fact_reservationhdr %}
+{% docs fact_reservations %}
 
 # Factual: Reservation Header
 

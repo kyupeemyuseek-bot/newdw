@@ -34,7 +34,7 @@ seeds:
         description: "Postal code of the branch location."
   
   - name: UnitType
-    description: "{{ doc('dim_unittype') }}"
+    description: "{{ doc('unittype') }}"
     columns:
       - name: UnitTypeCode
         description: "Unique identifier for the unit type."
