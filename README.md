@@ -52,21 +52,6 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-Ah — now I see exactly what’s happening. What you pasted **looks broken** because:
-
-1. Your Markdown lost **headings (`#`, `##`, `###`)** at the top of sections.
-2. Bulleted lists and code blocks are missing the proper markers (`bash` or `-`), so GitHub renders everything as a single paragraph.
-3. There’s no **continuous Markdown block** — the “2️⃣ dbt Cloud / Web UI Setup” section is plain text, not part of the Markdown structure.
-
-To make it **fully continuous, readable, and copy-paste-ready**:
-
-* Keep **headings** (`#`, `##`, `###`)
-* Use **code blocks** for commands (` ```bash ... ``` `)
-* Use **bullets (`-`)** for lists
-* Keep spacing consistent
-
-Here’s the **correct continuous version**, ready to paste into GitHub README edit mode:
-
 ````markdown
 # dbt Setup & Usage Guide
 
@@ -171,22 +156,6 @@ Go to [dbt Cloud](https://cloud.getdbt.com/) and create an account.
 * Use pull requests for code review and merging
 
 > ✅ dbt Cloud provides a web IDE, scheduler, Snowflake integration, and Git workflow without requiring local dbt installation.
-
-```
-
----
-
-✅ **Now everything is continuous**:  
-
-- Part 1 (Termux/dbt Core) and Part 2 (dbt Cloud) are in **one Markdown file**.  
-- Headings, code blocks, and bullets are correctly formatted.  
-- Copy-pasting this into **GitHub edit mode** will render it **cleanly**, readable, and professional.  
-
-If you want, I can also **add a “Quick Start” one-paste block** at the very top so beginners can literally copy everything and run Termux + dbt Core in one go.  
-
-Do you want me to do that?
-```
-
 
 --
 
