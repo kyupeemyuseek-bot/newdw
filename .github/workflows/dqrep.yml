@@ -1,12 +1,14 @@
-name: dbt test + publish report
+name: dbt test + Data Quality Report
 
 on:
-  push:
-  pull_request:
+  #push:
+  #pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: write   # allow pushing back to the repo
+  contents: read     # no need to write since we don't commit
+  pages: write       # needed for GitHub Pages deployment
+  id-token: write    # required for Pages auth
 
 jobs:
   run-dbt-tests:
@@ -15,8 +17,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true   # keep credentials for pushing
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -56,61 +56,16 @@ jobs:
         run: dbt test --profile newdw
 
       - name: Generate Data Quality Report
-        run: |
-          python scripts/dq_report.py
+        run: python scripts/dq_report.py   # should output docs/dbt_data_quality_report.html
 
-      - name: Commit & Push report
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/dbt_data_quality_report.html
-          git commit -m "Update data quality report" || echo "No changes to commit"
-          git push
-
-name: Data Quality Report
-
-on:
-  workflow_dispatch:   # run manually from Actions tab
-  # schedule:          # optional, uncomment to run automatically
-  #   - cron: "0 0 * * *"  # every day at midnight UTC
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      # 1. Checkout code
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # 2. Set up Python
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      # 3. Install dependencies (if you have requirements.txt)
-      - name: Install dependencies
-        run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      # 4. Run your Python report script
-      - name: Generate report
-        run: |
-          python scripts/dq_report.py
-
-      # 5. Upload report to GitHub Pages
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs   # will include dbt_data_quality_report.html
+          path: docs   # 👈 everything in docs/ will be published
 
   deploy:
-    needs: build
+    needs: run-dbt-tests
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -119,4 +74,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
- 
