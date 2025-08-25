@@ -52,24 +52,27 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-### ⚡ dbt Core Setup on Termux (Snowflake) - Single Copy-Paste
+dbt Setup & Usage Guide
+⚡ 1️⃣ Termux + dbt Core Setup (Snowflake)
 
-# 1️⃣ Update Termux packages
+Run these commands in Termux to install Python, Rust, dbt, and initialize a project:
+
+# Update Termux packages
 pkg update && pkg upgrade -y
 
-# 2️⃣ Install dependencies
+# Install dependencies
 pkg install git python python-pip clang make rust -y
 
-# 3️⃣ Upgrade pip, setuptools, wheel
+# Upgrade pip, setuptools, wheel
 pip install --upgrade pip setuptools wheel
 
-# 4️⃣ Install dbt Core (Snowflake adapter)
+# Install dbt Core (Snowflake adapter)
 pip install dbt-snowflake
 
-# 5️⃣ Create dbt profiles folder if it doesn't exist
+# Create dbt profiles folder
 mkdir -p ~/.dbt
 
-# 6️⃣ Create example profiles.yml
+# Create example profiles.yml
 cat > ~/.dbt/profiles.yml <<EOL
 my_project:
   target: dev
@@ -85,26 +88,28 @@ my_project:
       schema: analytics
 EOL
 
-echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit it with your Snowflake credentials."
+echo "✅ profiles.yml created at ~/.dbt/profiles.yml. Edit with your Snowflake credentials."
 
-# 7️⃣ Initialize a new dbt project
+# Initialize a new dbt project
 dbt init my_project
 cd my_project
 
 echo "✅ dbt project 'my_project' initialized."
 
-# 8️⃣ Optional: clone an existing repository
+# Optional: clone an existing repository
 # git clone <your_repo_url>
 # cd <repo_name>
-# Update profiles.yml if needed
 
-# 9️⃣ Test the setup
+# Test the setup
 dbt debug
 dbt run
 dbt run -m stg_reservationhdr
 dbt test
 
-echo "🎉 dbt setup complete! Edit your models in the 'models' folder."
+echo "🎉 dbt Core setup complete!"
+
+
+⚠️ Older or low-end devices may experience slow
 
 ---
 
